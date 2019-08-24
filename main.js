@@ -1,7 +1,7 @@
 //ログイン処理
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XTXFcg.u7hIw4QeWuJj4qhjbyiVpj71AG0';
+//const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XTXFcg.u7hIw4QeWuJj4qhjbyiVpj71AG0';
 var time;
 
 client.on('ready', () => {
@@ -67,5 +67,5 @@ client.on('message', message =>{
 		message.channel.bulkDelete(messagecount);
 	}
 });
-
-client.login(token);
+client.login(process.env.BOT_TOKEN);
+//client.login(token);
