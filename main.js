@@ -31,6 +31,9 @@ client.on('message', message =>{
             .catch(console.error);
 		return;
     }
+	if (message.content === '!unicode') {
+        message.channel.send(`https://sodebutton.github.io/AvastGlia/unicode_converter/index.html`);
+    }
 /*
     if (message.content === '/slot') {
     	message.channel.send(`スロット実行するよ！`);
