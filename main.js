@@ -7,6 +7,7 @@ var time;
 client.on('ready', () => {
     console.log('bot is loggin');
 });
+
 //Bot自身の発言を無視する呪い
 client.on('message', message =>{
     if(message.author.bot){
@@ -32,7 +33,10 @@ client.on('message', message =>{
 		return;
     }
 	if (message.content === '!unicode') {
-        message.channel.send(`https://sodebutton.github.io/AvastGlia/unicode_converter/index.html`);
+        message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
+    }
+    if (message.content === '!unco') {
+    	message.channel.send("https://unco.co.jp");
     }
 /*
     if (message.content === '/slot') {
