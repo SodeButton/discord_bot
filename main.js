@@ -12,27 +12,8 @@ client.on('ready', () => {
 client.on('message', message =>{
     if(message.author.bot){
         return;
-   }
-
-   if (message.content === '寒いね') {
-        let channel = message.channel;
-        let author = message.author.username;
-        let reply_text = `寒いね`;
-        message.reply(reply_text)
-            .then(message => console.log(`Sent message: ${reply_text}`))
-            .catch(console.error);
-        return;
-   }
-   if (message.content.match(/おはよ/)) {
-        let channel = message.channel;
-        let author = message.author.username;
-        let reply_text =`おはようございます！`;
-        message.reply(reply_text)
-            .then(message => console.log(`Sent message: ${reply_text}`))
-            .catch(console.error);
-		return;
     }
-	if (message.content === '!unicode') {
+    if (message.content === '!unicode') {
         message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
     }
     if (message.content === '!unco') {
@@ -59,7 +40,7 @@ client.on('message', message =>{
     	time = parseInt(time, 10) * 100;
         setTimeout(log, time);
     }
-*/
+
     if (message.content.match(/おやすみ/)) {
 	let channel = message.channel;
         let author = message.author.username;
@@ -69,7 +50,7 @@ client.on('message', message =>{
             .catch(console.error);
 		return;
     }
-/*
+
     if (message.content.startsWith('!delete ')){
 	let numberofmessages = message.content.split(' ');
 	let messagecount = parseInt(numberofmessages[1]); 
