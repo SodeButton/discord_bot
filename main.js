@@ -23,6 +23,9 @@ client.on('message', message => {
     if (message.content === 'ぶっとn') {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
+    if (message.content === 'うんちは正義') {
+    	message.channel.send('うんちは正義');
+    }
     /*
     if (message.content.startsWith('/save_string ') {
     	let save_split = message.content.split(' ');
