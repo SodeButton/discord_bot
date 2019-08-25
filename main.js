@@ -19,6 +19,9 @@ client.on('message', message =>{
     if (message.content === '!unco') {
     	message.channel.send("https://unco.co.jp");
     }
+    if (message.content === 'ぶっとn') {
+        message.channel.send("\_(⊡ω⊡- \_)⌒)_ﾌﾞｯﾄnｰﾝ");
+    }
 /*
     if (message.content === '/slot') {
     	message.channel.send(`スロット実行するよ！`);
