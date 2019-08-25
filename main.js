@@ -3,13 +3,14 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 //const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XTXFcg.u7hIw4QeWuJj4qhjbyiVpj71AG0';
 var time;
+let save_string=[10];
 
 client.on('ready', () => {
     console.log('bot is loggin');
 });
 
 //Bot自身の発言を無視する呪い
-client.on('message', message =>{
+client.on('message', message => {
     if(message.author.bot){
         return;
     }
@@ -22,6 +23,24 @@ client.on('message', message =>{
     if (message.content === 'ぶっとn') {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
+    if (message.content.startsWith('/save_string ') {
+    	let save_split = message.content.split(' ');
+    	if((parseInt(save_split[2]) == 0 ) && (parseInt(save_split[2]) > 10 ) || 'NaN') {
+    		message.channel.send('不適切な値です。');
+    		return;
+    	}
+    	save_string[parseInt(save_split[2])-1] = save_split[1];
+    	message.channel.send(`${save_string[parseInt(save_split[2])-1]}をデータ${parseInt(save_split[2])-1}にセーブしました。`);
+    }
+    if (message.content.startsWith('/load_string ') {
+    	let load_split = message.content.split(' ');
+    	if((parseInt(load_split[1]) == 0 ) && (parseInt(load_split[1]) > 10 ) || 'NaN') {
+    		message.channel.send('不適切な値です。');
+    		return;
+    	}
+    	message.channel.send(save_string[parseInt(load_split[1])]);
+    }
+    
 /*
     if (message.content === '/slot') {
     	message.channel.send(`スロット実行するよ！`);
