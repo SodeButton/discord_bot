@@ -26,11 +26,11 @@ client.on('message', message => {
     
     if (message.content.startsWith('/save_string ')) {
     	let save_slice = message.content.split(' ');
-    	if(parseInt(save_slice[2]) <= 0  || parseInt(save_slice[2]) > 10 || parseInt(save_slice[2]) == 'NaN') {
+    	if(parseInt(save_slice[save_slice.length - 1]) <= 0  || parseInt(save_slice[save_slice.length - 1]) > 10 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
-    		let save_num = parseInt(save_slice[2]) - 1;
+    		let save_num = parseInt(save_slice[save_slice.length - 1]) - 1;
     		save_string[save_num]= save_slice[1];
     		message.channel.send(`${save_string[save_num]}をデータ${save_num + 1}にセーブしました。`);
     	}
@@ -38,7 +38,7 @@ client.on('message', message => {
     
     if (message.content.startsWith('/load_string ')) {
     	let load_slice = message.content.split(' ');
-    	if(parseInt(load_slice[1]) <= 0 || parseInt(load_slice[1]) > 10 || parseInt(load_slice[1]) == 'NaN') {
+    	if(parseInt(load_slice[1]) <= 0 || parseInt(load_slice[1]) > 10 || isNaN(parseInt(load_slice[1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
