@@ -23,7 +23,7 @@ client.on('message', message => {
     if (message.content === 'ぶっとn') {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
-    /*
+    
     if (message.content.startsWith('/save_string ') {
     	let save_split = message.content.split(' ');
     	if(parseInt(save_split[2]) <= 0  || parseInt(save_split[2]) > 10) {
@@ -34,7 +34,7 @@ client.on('message', message => {
     	save_string[save_num] = save_split[1];
     	message.channel.send(`${save_string[save_num]}をデータ${save_num}にセーブしました。`);
     }
-    
+    /*
     if (message.content.startsWith('/load_string ') {
     	let load_split = message.content.split(' ');
     	if(parseInt(load_split[1]) <= 0  || parseInt(load_split[1]) > 10) {
