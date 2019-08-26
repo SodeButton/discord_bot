@@ -16,6 +16,14 @@ client.on('message', message => {
     if(message.author.bot){
         return;
     }
+    if (message.content === '_help') {
+    	message.channel.send(
+    		{embed: {
+    			color: f00,
+    			description: 'ヘルプだよ！'
+    		}}
+    	);
+    }
     if (message.content === '!unicode') {
         message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
     }
