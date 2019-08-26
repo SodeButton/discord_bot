@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 //const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XTXFcg.u7hIw4QeWuJj4qhjbyiVpj71AG0';
 var time;
-let save_string=[10];
+let save_string = [10];
 
 client.on('ready', () => {
     console.log('bot is loggin');
@@ -24,25 +24,26 @@ client.on('message', message => {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
     
-    /*
     if (message.content.startsWith('/save_string ') {
     	let save_split = message.content.split(' ');
-    	if(parseInt(save_split[2]) == 0  || parseInt(save_split[2]) > 10  || parseInt(save_split[2]) == 'NaN') {
+    	if(parseInt(save_split[2]) <= 0  || parseInt(save_split[2]) > 10  || parseInt(save_split[2]) == 'NaN') {
     		message.channel.send('不適切な値です。');
     		return;
     	}
-    	save_string[parseInt(save_split[2])-1] = save_split[1];
-    	message.channel.send(`${save_string[parseInt(save_split[2])-1]}をデータ${parseInt(save_split[2])-1}にセーブしました。`);
+    	let save_num = parseInt(save_split[2]) - 1;
+    	save_string[save_num] = save_split[1];
+    	message.channel.send(`${save_string[save_num]}をデータ${save_num}にセーブしました。`);
     }
+    
     if (message.content.startsWith('/load_string ') {
     	let load_split = message.content.split(' ');
-    	if((parseInt(load_split[1]) == 0 ) || (parseInt(load_split[1]) > 10 ) || parseInt(load_split[2]) == 'NaN') {
+    	if(parseInt(load_split[1]) <= 0  || parseInt(load_split[1]) > 10  || parseInt(load_split[2]) == 'NaN') {
     		message.channel.send('不適切な値です。');
     		return;
     	}
-    	message.channel.send(save_string[parseInt(load_split[1])]);
+    	let load_num = parseInt(load_split[1]) - 1;
+    	message.channel.send(save_string[load_num]);
     }
-    */
     
 /*
     if (message.content === '/slot') {
@@ -57,7 +58,7 @@ client.on('message', message => {
     }
 
     var log = function(){
-	message.channel.send(time/100 + `秒たったよ`);
+		message.channel.send(time/100 + `秒たったよ`);
     };
     
     if (message.content.startsWith('!timer ')) {
@@ -67,7 +68,7 @@ client.on('message', message => {
     }
 
     if (message.content.match(/おやすみ/)) {
-	let channel = message.channel;
+		let channel = message.channel;
         let author = message.author.username;
         let reply_text =`おやすみなさ〜い`;
         message.reply(reply_text)
@@ -77,10 +78,10 @@ client.on('message', message => {
     }
 
     if (message.content.startsWith('!delete ')){
-	let numberofmessages = message.content.split(' ');
-	let messagecount = parseInt(numberofmessages[1]); 
-	message.channel.bulkDelete(messagecount);
-   }
+		let numberofmessages = message.content.split(' ');
+		let messagecount = parseInt(numberofmessages[1]); 
+		message.channel.bulkDelete(messagecount);
+	}
 */
 });
 client.login(process.env.BOT_TOKEN);
