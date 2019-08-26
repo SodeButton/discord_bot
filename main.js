@@ -1,9 +1,11 @@
 //ログイン処理
 const Discord = require('discord.js');
 const client = new Discord.Client();
-//const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XTXFcg.u7hIw4QeWuJj4qhjbyiVpj71AG0';
+
 var time;
 let save_string = [];
+let create_string_input = new Array();
+let create_string_output = new Array();
 
 client.on('ready', () => {
     console.log('bot is loggin');
@@ -24,9 +26,25 @@ client.on('message', message => {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
     
+    if (message.content.startsWith('/create_str ')) {
+    	let create_slice = message.content.split(' ');
+    	let create_collab = "";
+    	for (var i = 1; i <= create_slice.length - 2; i++) {
+    		create_collab = create_collab + "" + create_slice[i];
+    	}
+    	create_string_input[create_slice[create_slice.length - 1]] = create_slice[create_slice.length - 1];
+    	create_string_output[create_slice[create_slice.length - 1]] = create_collab;
+    	
+		message.channel.send(`｢${create_collab}｣を｢${create_slice[create_slice.length - 1]}｣と置きました。`);
+	}
+	if(message.content == create_string_input[message.content]) {
+		message.channel.send(create_string_output[message.content]);
+	}
+    
     if (message.content.startsWith('/save_string ')) {
+    	message.channel.bulkDelete(1);
     	let save_slice = message.content.split(' ');
-    	if(parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
+    	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
@@ -42,8 +60,9 @@ client.on('message', message => {
     }
     
     if (message.content.startsWith('/load_string ')) {
+    	message.channel.bulkDelete(1);
     	let load_slice = message.content.split(' ');
-    	if(parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
+    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
