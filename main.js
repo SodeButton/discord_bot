@@ -23,7 +23,7 @@ client.on('message', message => {
     if (message.content === 'ぶっとn') {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
-    
+    /*
     if (message.content.startsWith('/save_string ') {
     	let save_split = message.content.split(' ');
     	if(parseInt(save_split[2]) <= 0  || parseInt(save_split[2]) > 10) {
@@ -44,7 +44,7 @@ client.on('message', message => {
     	let load_num = parseInt(load_split[1]) - 1;
     	message.channel.send(save_string[load_num]);
     }
-    
+    */
 /*
     if (message.content === '/slot') {
     	message.channel.send(`スロット実行するよ！`);
