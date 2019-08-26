@@ -32,7 +32,7 @@ client.on('message', message => {
     	else {
     		let save_num = parseInt(save_slice[2]) - 1;
     		save_string[save_num] = save_slice[1];
-    		message.channel.send(`${save_string[save_num]}をデータ${save_num}にセーブしました。`);
+    		message.channel.send(`${save_string[save_num]}をデータ${save_num + 1}にセーブしました。`);
     	}
     }
     
