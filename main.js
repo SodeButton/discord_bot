@@ -24,7 +24,7 @@ client.on('message', message => {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
     
-    if (message.content.startsWith('/save_string ') {
+    if (message.content.startsWith('/save_string ')) {
     	let save_slice = message.content.split(' ');
     	if(parseInt(save_slice[2]) <= 0  || parseInt(save_slice[2]) > 10) {
     		message.channel.send('不適切な値です。');
@@ -35,8 +35,8 @@ client.on('message', message => {
     		message.channel.send(`${save_string[save_num]}をデータ${save_num}にセーブしました。`);
     	}
     }
-    /*
-    if (message.content.startsWith('/load_string ') {
+    
+    if (message.content.startsWith('/load_string ')) {
     	let load_slice = message.content.split(' ');
     	if(parseInt(load_slice[1]) <= 0 || parseInt(load_slice[1]) > 10) {
     		message.channel.send('不適切な値です。');
@@ -46,7 +46,7 @@ client.on('message', message => {
     		message.channel.send(save_string[load_num]);
     	}
     }
-    */
+    
 /*
     if (message.content === '/slot') {
     	message.channel.send(`スロット実行するよ！`);
