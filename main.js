@@ -26,7 +26,7 @@ client.on('message', message => {
     
     if (message.content.startsWith('/save_string ')) {
     	let save_slice = message.content.split(' ');
-    	if(parseInt(save_slice[save_slice.length - 1]) <= 0  || parseInt(save_slice[save_slice.length - 1]) > 10 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
+    	if(parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
@@ -43,7 +43,7 @@ client.on('message', message => {
     
     if (message.content.startsWith('/load_string ')) {
     	let load_slice = message.content.split(' ');
-    	if(parseInt(load_slice[1]) <= 0 || parseInt(load_slice[1]) > 10 || isNaN(parseInt(load_slice[1]))) {
+    	if(parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
