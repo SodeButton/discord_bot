@@ -19,7 +19,7 @@ client.on('message', message => {
     if (message.content === '_help') {
     	message.channel.send(
     		{embed: {
-    			color: f00,
+    			color: 16757683,
     			description: 'ヘルプだよ！'
     		}}
     	);
