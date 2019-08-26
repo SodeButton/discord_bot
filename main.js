@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 //const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XTXFcg.u7hIw4QeWuJj4qhjbyiVpj71AG0';
 var time;
-let save_string = [10];
+let save_string = [];
 
 client.on('ready', () => {
     console.log('bot is loggin');
