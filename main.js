@@ -16,32 +16,32 @@ client.on('message', message => {
     if(message.author.bot){
         return;
     }
-    if (message.content === '_help') {
+    if (message.content === 'help();') {
     	message.channel.send(
     		{embed: {
     			title: 'ヘルプだよ！',
     			color: 7506394,
     			fields: [
     				{
-    					name: "_help",
+    					name: "help();",
     					value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
     				},
     				{
-    					name: "[!unicode](https://sodebutton.github.io/AvastGlia/unicode_converter/index.html)",
+    					name: "unicode();",
     					value: "> Jsonの文字をunicodeに変換してくれるサイトを表示するよ！"
     				},
     				{
-    					name: "[!unco](https://unco.co.jp)",
+    					name: "unco();",
     					value: "> うんこ株式会社です。"
     				}
     			]
     		}}
     	);
     }
-    if (message.content === '!unicode') {
+    if (message.content === 'unicode();') {
         message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
     }
-    if (message.content === '!unco') {
+    if (message.content === 'unco();') {
     	message.channel.send("https://unco.co.jp");
     }
     if (message.content === 'ぶっとn') {
@@ -90,10 +90,14 @@ client.on('message', message => {
     	}
     }
     
-    if (message.content.startsWith('/load_string ')) {
+    if (message.content.startsWith('load_string( ')) {
+    	//メッセージ削除
     	message.channel.bulkDelete(1);
+    	
     	let load_slice = message.content.split(' ');
-    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
+    	let load_last = message.content.slice(-2);
+    	
+    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1])) || load_last !== ');') {
     		message.channel.send('不適切な値です。');
     	}
     	else {
