@@ -95,6 +95,7 @@ client.on('message', message => {
     	//message.channel.bulkDelete(1);
     	
     	let load_slice = message.content.replace(/load_string\(|\);/g, "");
+    	load_slice = load_slice.length.replace(/\s/, "");
     	
     	if (parseInt(load_slice.length) <= 0 || isNaN(parseInt(load_slice.length))) {
     		message.channel.send('不適切な値です。');
