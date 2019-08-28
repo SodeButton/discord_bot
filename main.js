@@ -78,7 +78,7 @@ client.on('message', message => {
     	let save_keyword = message.content.match(/="(.*?)(?<!\\)"/);
     	save_slice = save_slice.replace(/\s+/g, "");
     	save_slice = save_slice.split(/,/);
-    	message.channel.send(save_keyword);
+    	message.channel.send(save_keyword[1]);
     	message.channel.send(save_slice);
     	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
     		message.channel.send('不適切な値です。');
