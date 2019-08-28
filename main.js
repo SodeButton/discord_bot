@@ -4,8 +4,8 @@ const client = new Discord.Client();
 
 var time;
 let save_string = [];
-let create_string_input = new Array();
-let create_string_output = new Array();
+let create_string_input = {};
+let create_string_output = {};
 
 client.on('ready', () => {
     console.log('bot is loggin');
@@ -23,15 +23,15 @@ client.on('message', message => {
     			color: 7506394,
     			fields: [
     				{
-    					name: "`_help`",
+    					name: "_help",
     					value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
     				},
     				{
-    					name: "`[!unicode](https://sodebutton.github.io/AvastGlia/unicode_converter/index.html)`",
+    					name: "[!unicode](https://sodebutton.github.io/AvastGlia/unicode_converter/index.html)",
     					value: "> Jsonの文字をunicodeに変換してくれるサイトを表示するよ！"
     				},
     				{
-    					name: "`[!unco](https://unco.co.jp)`",
+    					name: "[!unco](https://unco.co.jp)",
     					value: "> うんこ株式会社です。"
     				}
     			]
@@ -62,8 +62,8 @@ client.on('message', message => {
 	if (message.content.startsWith('/clear_str ')) {
 		let clear_slice = message.content.split(' ');
 		
-		create_string_input.splice(clear_slice[1], 1);
-		create_string_output.splice(clear_slice[1], 1);
+		delete create_string_input[clear_slice[1]];
+		delete create_string_output[clear_slice[1]];
 		
 		message.channel.send(`${clear_slice[1]}を削除しました。`);
 	}
