@@ -90,11 +90,12 @@ client.on('message', message => {
     	}
     }
     
-    if (message.content.startsWith('$load_string')) {
+    if (message.content.startsWith('load_string(')) {
     	//メッセージ削除
     	//message.channel.bulkDelete(1);
     	
-    	let load_slice = message.content.split(' ');
+    	let load_slice = message.content.split(/load_string\((.*?)\);/);
+    	message.channel.send(load_slice);
     	
     	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
     		message.channel.send('不適切な値です。');
