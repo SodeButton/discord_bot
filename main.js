@@ -75,7 +75,7 @@ client.on('message', message => {
     if (message.content.startsWith('save_string(')) {
     	//message.channel.bulkDelete(1);
     	let save_slice = message.content.replace(/save_string\(|\);/g, "");
-    	let save_keyword = message.content.match(/\"|\"/g);
+    	let save_keyword = message.content.match(/="(.*?)(?<!\\)"/);
     	save_slice = save_slice.replace(/\s+/g, "");
     	save_slice = save_slice.split(/,/);
     	message.channel.send(save_keyword);
