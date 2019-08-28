@@ -24,10 +24,10 @@ client.on('message', message => {
     			fields: {
     				{
     					name: "`_help`",
-    					value: "> 色々なコマンドを表示するよ！今表示しているのがそうだね"
+    					value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
     				},
     				{
-    					name: "`[!unicode](https://sodebutton.github.io/AvastGlia/unicode_converter/index.html)`",
+    					name: "`!unicode`",
     					value: "> Jsonの文字をunicodeに変換してくれるサイトを表示するよ！"
     				},
     				{
