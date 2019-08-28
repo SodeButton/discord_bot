@@ -96,6 +96,7 @@ client.on('message', message => {
     	
     	let load_slice = message.content.split(/load_string\((.*?)\);/);
     	message.channel.send(load_slice);
+    	message.channel.send(Number(load_slice));
     	
     	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
     		message.channel.send('不適切な値です。');
