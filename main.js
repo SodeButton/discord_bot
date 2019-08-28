@@ -95,15 +95,15 @@ client.on('message', message => {
     	message.channel.bulkDelete(1);
     	
     	let load_slice = message.content.split("load_string(");
-    	message.channel.send(load_slice);
-    	load_slice = load_slice[0].split(");");
-    	message.channel.send(load_slice);
+    	//message.channel.send(load_slice);
+    	load_slice = load_slice.split(");");
+    	//message.channel.send(load_slice);
     	
-    	if (parseInt(load_slice[0]) <= 0 || isNaN(parseInt(load_slice[0]))) {
+    	if (parseInt(load_slice) <= 0 || isNaN(parseInt(load_slice))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
-    		let load_num = parseInt(load_slice[0]) - 1;
+    		let load_num = parseInt(load_slice) - 1;
     		message.channel.send(save_string[load_num]);
     	}
     }
