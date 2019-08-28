@@ -19,8 +19,22 @@ client.on('message', message => {
     if (message.content === '_help') {
     	message.channel.send(
     		{embed: {
-    			color: 16757683,
-    			description: 'ヘルプだよ！'
+    			title: 'ヘルプだよ！',
+    			color: 7506394,
+    			fields: {
+    				{
+    					name: "`_help`",
+    					value: "> 色々なコマンドを表示するよ！今表示しているのがそうだね"
+    				},
+    				{
+    					name: "`[!unicode](https://sodebutton.github.io/AvastGlia/unicode_converter/index.html)`",
+    					value: "> Jsonの文字をunicodeに変換してくれるサイトを表示するよ！"
+    				},
+    				{
+    					name: "`!unco`",
+    					value: "unco"
+    				}
+    			}
     		}}
     	);
     }
