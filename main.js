@@ -94,13 +94,13 @@ client.on('message', message => {
     	//メッセージ削除
     	//message.channel.bulkDelete(1);
     	
-    	let load_slice = message.content.split(/load_string\((.*?)\);/);
+    	let load_slice = message.content.replace(/load_string\(|\);/g, "");
     	
-    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
+    	if (parseInt(load_slice.length) <= 0 || isNaN(parseInt(load_slice.length))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
-    		let load_num = parseInt(load_slice[1]) - 1;
+    		let load_num = parseInt(load_slice.length) - 1;
     		message.channel.send(save_string[load_num]);
     	}
     }
