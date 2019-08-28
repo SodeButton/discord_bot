@@ -72,26 +72,34 @@ client.on('message', message => {
 		message.channel.send(create_string_output[message.content]);
 	}
     
-    if (message.content.startsWith('/save_string ')) {
+    if (message.content.startsWith('save_string(')) {
     	//message.channel.bulkDelete(1);
-    	let save_slice = message.content.split(' ');
+    	let save_slice = message.content.replace(/save_string\(|\);/g, "");
+    	let save_keyword = message.content.match(/\"|\"/g);
+    	save_slice = save_slice.replace(/\s+/g, "");
+    	save_slice = save_slice.split(/,/);
+    	message.channel.send(save_keyword);
+    	message.channel.send(save_slice);
     	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
     		let save_num = parseInt(save_slice[save_slice.length - 1]) - 1;
     		let save_collab = "";
+    		save_collab = save_keyword[0];
+    		/*
     		for (var i = 1; i <= save_slice.length - 2; i++) {
     		
     			save_collab = save_collab + " " + save_slice[i];
     		}
+    		*/
     		save_string[save_num] = save_collab;
     		message.channel.send(`${save_string[save_num]}をデータ${save_num + 1}にセーブしました。`);
     	}
     }
     
     if (message.content.startsWith('load_string(')) {
-    	//メッセージ削除
+    
     	//message.channel.bulkDelete(1);
     	
     	let load_slice = message.content.replace(/load_string\(|\);/g, "");
