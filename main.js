@@ -95,7 +95,7 @@ client.on('message', message => {
     	//message.channel.bulkDelete(1);
     	
     	let load_slice = message.content.split(/load_string\((.*?)\);/);
-    	message.channel.send(load_slice);
+    	message.channel.send(parseInt(load_slice));
     	//load_slice = load_slice.split(");");
     	//message.channel.send(load_slice);
     	
