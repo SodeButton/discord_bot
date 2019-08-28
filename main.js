@@ -81,7 +81,7 @@ client.on('message', message => {
     	save_slice = save_slice.split(/,/);
     	message.channel.send(save_keyword[1]);
     	message.channel.send(save_slice);
-    	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
+    	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1])) || !regex.test(message.content)) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
