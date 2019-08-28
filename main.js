@@ -52,7 +52,7 @@ client.on('message', message => {
     	let create_slice = message.content.split(' ');
     	let create_collab = "";
     	for (var i = 1; i <= create_slice.length - 2; i++) {
-    		create_collab = create_collab + "" + create_slice[i];
+    		create_collab = create_collab + " " + create_slice[i];
     	}
     	create_string_input[create_slice[create_slice.length - 1]] = create_slice[create_slice.length - 1];
     	create_string_output[create_slice[create_slice.length - 1]] = create_collab;
