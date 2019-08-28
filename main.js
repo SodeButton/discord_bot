@@ -94,7 +94,7 @@ client.on('message', message => {
     	//メッセージ削除
     	message.channel.bulkDelete(1);
     	
-    	let load_slice = message.content.split(/load_string((.*?));/);
+    	let load_slice = message.content.split(/load_string\((.*?)\);/);
     	let load_last = message.content.slice(-2);
     	
     	if (parseInt(load_slice[0]) <= 0 || isNaN(parseInt(load_slice[0])) || load_last !== ');') {
