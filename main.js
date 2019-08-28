@@ -21,7 +21,7 @@ client.on('message', message => {
     		{embed: {
     			title: 'ヘルプだよ！',
     			color: 7506394,
-    			fields: {
+    			fields: [
     				{
     					name: "`_help`",
     					value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
@@ -34,7 +34,7 @@ client.on('message', message => {
     					name: "`!unco`",
     					value: "unco"
     				}
-    			}
+    			]
     		}}
     	);
     }
