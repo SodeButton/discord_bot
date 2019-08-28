@@ -73,7 +73,7 @@ client.on('message', message => {
 	}
     
     if (message.content.startsWith('/save_string ')) {
-    	message.channel.bulkDelete(1);
+    	//message.channel.bulkDelete(1);
     	let save_slice = message.content.split(' ');
     	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1]))) {
     		message.channel.send('不適切な値です。');
@@ -92,9 +92,9 @@ client.on('message', message => {
     
     if (message.content.startsWith('load_string(')) {
     	//メッセージ削除
-    	message.channel.bulkDelete(1);
+    	//message.channel.bulkDelete(1);
     	
-    	let load_slice = message.content.split(/load_string((.*?));/);
+    	let load_slice = message.content.split(/load_string\((.*?)\);/);
     	message.channel.send(load_slice);
     	//load_slice = load_slice.split(");");
     	//message.channel.send(load_slice);
