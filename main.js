@@ -90,18 +90,18 @@ client.on('message', message => {
     	}
     }
     
-    if (message.content.startsWith('load_string( ')) {
+    if (message.content.startsWith('load_string(')) {
     	//メッセージ削除
     	message.channel.bulkDelete(1);
     	
-    	let load_slice = message.content.split(' ');
+    	let load_slice = message.content.split(/load_string((.*?));/);
     	let load_last = message.content.slice(-2);
     	
-    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1])) || load_last !== ');') {
+    	if (parseInt(load_slice) <= 0 || isNaN(parseInt(load_slice)) || load_last !== ');') {
     		message.channel.send('不適切な値です。');
     	}
     	else {
-    		let load_num = parseInt(load_slice[1]) - 1;
+    		let load_num = parseInt(load_slice) - 1;
     		message.channel.send(save_string[load_num]);
     	}
     }
