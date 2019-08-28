@@ -27,12 +27,12 @@ client.on('message', message => {
     					value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
     				},
     				{
-    					name: "`!unicode`",
+    					name: "`[!unicode](https://sodebutton.github.io/AvastGlia/unicode_converter/index.html)`",
     					value: "> Jsonの文字をunicodeに変換してくれるサイトを表示するよ！"
     				},
     				{
-    					name: "`!unco`",
-    					value: "unco"
+    					name: "`[!unco](https://unco.co.jp)`",
+    					value: "> うんこ株式会社です。"
     				}
     			]
     		}}
@@ -52,14 +52,23 @@ client.on('message', message => {
     	let create_slice = message.content.split(' ');
     	let create_collab = "";
     	for (var i = 1; i <= create_slice.length - 2; i++) {
-    		create_collab = create_collab + " " + create_slice[i];
+    		create_collab = create_collab + create_slice[i] + " ";
     	}
     	create_string_input[create_slice[create_slice.length - 1]] = create_slice[create_slice.length - 1];
     	create_string_output[create_slice[create_slice.length - 1]] = create_collab;
     	
 		message.channel.send(`｢${create_collab}｣を｢${create_slice[create_slice.length - 1]}｣と置きました。`);
 	}
-	if(message.content == create_string_input[message.content]) {
+	if (message.content.startsWith('/clear_str ')) {
+		let clear_slice = message.content.split(' ');
+		
+		create_string_input.splice(clear_slice[1], 1);
+		create_string_output.splice(clear_slice[1], 1);
+		
+		message.channel.send(`${clear_slice[1]}を削除しました。`);
+	}
+	
+	if (message.content == create_string_input[message.content]) {
 		message.channel.send(create_string_output[message.content]);
 	}
     
