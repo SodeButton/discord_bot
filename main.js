@@ -132,13 +132,13 @@ client.on('message', message => {
     	let load_slice = message.content.replace(/loadStr\(|\);/g, "");
     	load_slice = load_slice.replace(/\s+/g, "");
     	
-    	message.channel.send(load_slice[load_slice.length]);
+    	message.channel.send(load_slice);
     	
-    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
+    	if (parseInt(load_slice) <= 0 || isNaN(parseInt(load_slice))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
-    		let load_num = parseInt(load_slice[1]) - 1;
+    		let load_num = parseInt(load_slice);
     		message.channel.send(save_string[load_num]);
     	}
     }
