@@ -33,6 +33,22 @@ client.on('message', message => {
     				{
     					name: "unco();",
     					value: "> うんこ株式会社です。"
+    				},
+    				{
+    					name: "save_string(string String, int Int);",
+    					value: "> string型でInt番目にセーブします"
+    				},
+    				{
+    					name: "load_string(int Int);",
+    					value: "> save_string関数でセーブした値を呼び出します。"
+    				},
+    				{
+    					name: "/create_str <string String> <string String>",
+    					value: "> 引数1を引数2と置きます。"
+    				},
+    				{
+    					name: "/clear_str <string String>",
+    					value: "> /create_strの引数2を引数1に入れるとそれを削除します。"
     				}
     			]
     		}}
@@ -88,12 +104,7 @@ client.on('message', message => {
     		let save_num = parseInt(save_slice[save_slice.length - 1]) - 1;
     		let save_collab = "";
     		save_collab = save_keyword[1];
-    		/*
-    		for (var i = 1; i <=  - 2; i++) {
     		
-    			save_collab = save_collab + " " + save_slice[i];
-    		}
-    		*/
     		save_string[save_num] = save_collab;
     		message.channel.send(`${save_string[save_num]}をデータ${save_num + 1}にセーブしました。`);
     	}
