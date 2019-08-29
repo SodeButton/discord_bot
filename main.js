@@ -35,20 +35,20 @@ client.on('message', message => {
     					value: "> うんこ株式会社です。"
     				},
     				{
-    					name: "save_string(string String, int Int);",
+    					name: "saveStr(string String, int Int);",
     					value: "> string型でInt番目にセーブします"
     				},
     				{
-    					name: "load_string(int Int);",
-    					value: "> save_string関数でセーブした値を呼び出します。"
+    					name: "loadStr(int Int);",
+    					value: "> saveStr関数でセーブした値を呼び出します。"
     				},
     				{
-    					name: "/create_str <string String> <string String>",
+    					name: "createStr(string String, string String);",
     					value: "> 引数1を引数2と置きます。"
     				},
     				{
-    					name: "/clear_str <string String>",
-    					value: "> /create_strの引数2を引数1に入れるとそれを削除します。"
+    					name: "clearStr(string String);",
+    					value: "> createStr関数の引数2を引数1に入れるとそれを削除します。"
     				}
     			]
     		}}
@@ -104,9 +104,9 @@ client.on('message', message => {
 		message.channel.send(create_string_output[message.content]);
 	}
     //+++++++++++++++++++++++
-    if (message.content.startsWith('saveString(')) {
+    if (message.content.startsWith('saveStr(')) {
     	//message.channel.bulkDelete(1);
-    	let save_slice = message.content.replace(/saveString\(|\);/g, "");
+    	let save_slice = message.content.replace(/saveStr\(|\);/g, "");
     	let regex = /"(.*?)(?<!\\)"/;
     	let save_keyword = regex.exec(message.content);
     	save_slice = save_slice.replace(/\s+/g, "");
@@ -126,18 +126,17 @@ client.on('message', message => {
     	}
     }
     //+++++++++++++++++++++++
-    if (message.content.startsWith('loadString(')) {
+    if (message.content.startsWith('loadStr(')) {
     
     	//message.channel.bulkDelete(1);
-    	
-    	let load_slice = message.content.replace(/loadString\(|\);/g, "");
+    	let load_slice = message.content.replace(/loadStr\(|\);/g, "");
     	load_slice = load_slice.replace(/\s+/g, "");
     	
-    	if (parseInt(load_slice.length) <= 0 || isNaN(parseInt(load_slice.length))) {
+    	if (parseInt(load_slice[1]) <= 0 || isNaN(parseInt(load_slice[1]))) {
     		message.channel.send('不適切な値です。');
     	}
     	else {
-    		let load_num = parseInt(load_slice.length) - 1;
+    		let load_num = parseInt(load_slice[1]) - 1;
     		message.channel.send(save_string[load_num]);
     	}
     }
