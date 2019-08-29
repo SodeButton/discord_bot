@@ -48,12 +48,15 @@ client.on('message', message => {
     				},
     				{
     					name: "/clear_str <string String>",
-    					value: "> /create_strの引数2を引数1に入れるとそれを削除します。"
+    					value: "> /create_strの引数2を引数1に入れるとそれを削除します。"  b
     				}
     			]
     		}}
     	);
     }
+    //////////////////////////////////
+    //								//
+    //////////////////////////////////
     if (message.content === 'unicode();') {
         message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
     }
@@ -63,19 +66,22 @@ client.on('message', message => {
     if (message.content === 'ぶっとn') {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
-    
-    if (message.content.startsWith('/create_str ')) {
-    	let create_slice = message.content.split(' ');
-    	let create_collab = "";
-    	for (var i = 1; i <= create_slice.length - 2; i++) {
-    		create_collab = create_collab + create_slice[i] + " ";
-    	}
-    	create_string_input[create_slice[create_slice.length - 1]] = create_slice[create_slice.length - 1];
-    	create_string_output[create_slice[create_slice.length - 1]] = create_collab;
+    //++++++++++++++++++++++
+    if (message.content.startsWith('createStr(')) {
+    	let create_slice = message.content.replace(/createStr\(|\);/g, "");
+    	let regex = /"(.*?)(?<!\\)"/;
+    	let create_keyword = regex.exec(message.content);
+    	create_slice = create_slice.replace(/\s+/g, "");
+    	create_slice = create_slice.split(/,/);
+    	let create_collab = create_keyword[1];
     	
-		message.channel.send(`｢${create_collab}｣を｢${create_slice[create_slice.length - 1]}｣と置きました。`);
+    	create_string_input[create_keyword[2]] = create_keyword[2];
+    	create_string_output[create_keyword[2]] = create_collab;
+    	
+		message.channel.send(`｢${create_collab}｣を｢${create_keyword[2]}｣と置きました。`);
 	}
-	if (message.content.startsWith('/clear_str ')) {
+	//+++++++++++++++++++++++
+	if (message.content.startsWith('clearStr(')) {
 		let clear_slice = message.content.split(' ');
 		
 		delete create_string_input[clear_slice[1]];
@@ -83,20 +89,20 @@ client.on('message', message => {
 		
 		message.channel.send(`${clear_slice[1]}を削除しました。`);
 	}
-	
+	//+++++++++++++++++++++++
 	if (message.content == create_string_input[message.content]) {
 		message.channel.send(create_string_output[message.content]);
 	}
-    
-    if (message.content.startsWith('save_string(')) {
+    //+++++++++++++++++++++++
+    if (message.content.startsWith('saveString(')) {
     	//message.channel.bulkDelete(1);
-    	let save_slice = message.content.replace(/save_string\(|\);/g, "");
+    	let save_slice = message.content.replace(/saveString\(|\);/g, "");
     	let regex = /"(.*?)(?<!\\)"/;
     	let save_keyword = regex.exec(message.content);
     	save_slice = save_slice.replace(/\s+/g, "");
     	save_slice = save_slice.split(/,/);
-    	message.channel.send(save_keyword[1]);
-    	message.channel.send(save_slice);
+    	//message.channel.send(save_keyword[1]);
+    	//message.channel.send(save_slice);
     	if (parseInt(save_slice[save_slice.length - 1]) <= 0 || isNaN(parseInt(save_slice[save_slice.length - 1])) || !regex.test(message.content)) {
     		message.channel.send('不適切な値です。');
     	}
@@ -109,12 +115,12 @@ client.on('message', message => {
     		message.channel.send(`${save_string[save_num]}をデータ${save_num + 1}にセーブしました。`);
     	}
     }
-    
-    if (message.content.startsWith('load_string(')) {
+    //+++++++++++++++++++++++
+    if (message.content.startsWith('loadString(')) {
     
     	//message.channel.bulkDelete(1);
     	
-    	let load_slice = message.content.replace(/load_string\(|\);/g, "");
+    	let load_slice = message.content.replace(/loadString\(|\);/g, "");
     	load_slice = load_slice.replace(/\s+/g, "");
     	
     	if (parseInt(load_slice.length) <= 0 || isNaN(parseInt(load_slice.length))) {
