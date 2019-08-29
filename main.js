@@ -70,15 +70,17 @@ client.on('message', message => {
     if (message.content.startsWith('createStr(')) {
     	let create_slice = message.content.replace(/createStr\(|\);/g, "");
     	let regex = /"(.*?)(?<!\\)"/;
-    	let create_keyword = regex.exec(message.content);
-    	create_slice = create_slice.replace(/\s+/g, "");
-    	create_slice = create_slice.split(/,/);
-    	let create_collab = create_keyword[1];
-    	message.channel.send(create_keyword);
-    	create_string_input[create_keyword[2]] = create_keyword[2];
-    	create_string_output[create_keyword[2]] = create_collab;
     	
-		message.channel.send(`｢${create_collab}｣を｢${create_keyword[2]}｣と置きました。`);
+    	//create_slice = create_slice.replace(/\s+/g, "");
+    	create_slice = create_slice.split(/,/);
+    	let create_keyword1 = regex.exec(create_slice[0]);
+    	let create_keyword2 = regex.exec(create_slice[1]);
+    	let create_collab = create_keyword1[1];
+    	message.channel.send(create_keyword);
+    	create_string_input[create_keyword2[1]] = create_keyword2[1];
+    	create_string_output[create_keyword2[1]] = create_collab;
+    	
+		message.channel.send(`｢${create_collab}｣を｢${create_keyword2[1]}｣と置きました。`);
 	}
 	//+++++++++++++++++++++++
 	if (message.content.startsWith('clearStr(')) {
