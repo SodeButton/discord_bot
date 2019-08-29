@@ -69,17 +69,19 @@ client.on('message', message => {
     //++++++++++++++++++++++
     if (message.content.startsWith('createStr(')) {
     	let create_slice = message.content.replace(/createStr\(|\);/g, "");
-    	let regex = /"(.*?)(?<!\\)"/;
+    	let regex;
+    	let regex1 = /"(.*?)(?<!\\)"/;
+    	let regex2 = /'(.*?)(?<!\\)'/;
+    	if (regex1.test(create_slice)) {
+    		regex = regex1;
+    	}
+    	else if (regex2.test(create_slice)) {
+    		regex = regex2;
+    	}
     	
     	//create_slice = create_slice.replace(/\s+/g, "");
     	let create_keyword = create_slice.split(regex);
-    	//message.channel.send(create_keyword);
-    	//create_slice = create_slice.split(/,/);
-    	//let create_keyword1 = regex.exec(create_slice[0]);
-    	//let create_keyword2 = regex.exec(create_slice[1]);
     	let create_collab = create_keyword[1];
-    	//message.channel.send(create_keyword1);
-    	//message.channel.send(create_keyword2);
     	create_string_input[create_keyword[3]] = create_keyword[3];
     	create_string_output[create_keyword[3]] = create_collab;
     	
