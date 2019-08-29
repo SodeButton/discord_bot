@@ -67,6 +67,9 @@ client.on('message', message => {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
     //++++++++++++++++++++++
+    if (message.content.startsWith('')) {
+    	eval(message.content);
+    }
     if (message.content.startsWith('createStr(')) {
     	eval(message.content);
     	function createStr(str1, str2){
@@ -77,17 +80,11 @@ client.on('message', message => {
 	}
 	//+++++++++++++++++++++++
 	if (message.content.startsWith('clearStr(')) {
-		let clear_slice =  "";
-		let regex = /"(.*?)(?<!\\)"/;
-		
-		if (regex.test(message.content)) {
-			let clear_keyword = regex.exec(message.content);
-			delete create_string_input[clear_keyword[1]];
-			delete create_string_output[clear_keyword[1]];
-		
-			message.channel.send(`${clear_keyword[1]}を削除しました。`);
-		} else {
-			message.channel.send("不適切な値です。");
+		eval(message.content);
+		function clearStr(str1) {
+			delete create_string_input[str1];
+			delete create_string_output[str1];
+			message.channel.send(`${str1}を削除しました。`);
 		}
 	}
 	
