@@ -68,7 +68,12 @@ client.on('message', message => {
     }
     //++++++++++++++++++++++
     if (message.content.startsWith('')) {
-    	eval(message.content);
+    	try {
+    		eval(message.content);
+    	}
+    	catch(e) {
+    		console.log(e.message);
+    	}
     }
     if (message.content.startsWith('createStr(')) {
     	eval(message.content);
