@@ -58,11 +58,7 @@ client.on('message', message => {
     //								//
     //////////////////////////////////
     if (message.content === 'unicode();') {
-    	eval(message.content);
         message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
-    }
-    function unicode() {
-    	message.channel.send("aaaa");
     }
     if (message.content === 'unco();') {
     	message.channel.send("https://unco.co.jp");
@@ -72,6 +68,13 @@ client.on('message', message => {
     }
     //++++++++++++++++++++++
     if (message.content.startsWith('createStr(')) {
+    	eval(message.content);
+    	function createStr(str1, str2){
+    		create_string_input[str1] = str1;
+    		create_string_output[str1] = str2;
+    		message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
+    	}
+    	/*
     	let create_slice = message.content.replace(/createStr\(|\);/g, "");
     	let regex;
     	let regex1 = /"(.*?)(?<!\\)"/;
@@ -90,10 +93,11 @@ client.on('message', message => {
     	create_string_output[create_keyword[3]] = create_collab;
     	
 		message.channel.send(`｢${create_collab}｣を｢${create_keyword[3]}｣と置きました。`);
+		*/
 	}
 	//+++++++++++++++++++++++
 	if (message.content.startsWith('clearStr(')) {
-		let clear_slice = message.content.replace(/clearStr\(|\);/g, "");
+		let clear_slice =  "");
 		let regex = /"(.*?)(?<!\\)"/;
 		
 		if (regex.test(message.content)) {
