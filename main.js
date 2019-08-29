@@ -67,6 +67,7 @@ client.on('message', message => {
         message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
     }
     //++++++++++++++++++++++
+    /*
     if (message.content.startsWith('')) {
     	try {
     		eval(message.content);
@@ -75,6 +76,7 @@ client.on('message', message => {
     		console.log(e.message);
     	}
     }
+    */
     if (message.content.startsWith('createStr(')) {
     	eval(message.content);
     	function createStr(str1, str2){
