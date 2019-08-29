@@ -76,7 +76,8 @@ client.on('message', message => {
     	let create_keyword1 = regex.exec(create_slice[0]);
     	let create_keyword2 = regex.exec(create_slice[1]);
     	let create_collab = create_keyword1[1];
-    	message.channel.send(create_keyword);
+    	message.channel.send(create_keyword1);
+    	message.channel.send(create_keyword2);
     	create_string_input[create_keyword2[1]] = create_keyword2[1];
     	create_string_output[create_keyword2[1]] = create_collab;
     	
