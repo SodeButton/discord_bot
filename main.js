@@ -77,7 +77,7 @@ client.on('message', message => {
 	}
 	//+++++++++++++++++++++++
 	if (message.content.startsWith('clearStr(')) {
-		let clear_slice =  "");
+		let clear_slice =  "";
 		let regex = /"(.*?)(?<!\\)"/;
 		
 		if (regex.test(message.content)) {
