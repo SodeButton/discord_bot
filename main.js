@@ -61,6 +61,9 @@ client.on('message', message => {
     	eval(message.content);
         message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
     }
+    function unicode() {
+    	message.channel.send("aaaa");
+    }
     if (message.content === 'unco();') {
     	message.channel.send("https://unco.co.jp");
     }
@@ -150,7 +153,3 @@ client.on('message', message => {
 });
 client.login(process.env.BOT_TOKEN);
 //client.login(token);
-
-function unicode() {
-	message.channel.send("aaaa");
-}
