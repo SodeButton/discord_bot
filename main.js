@@ -72,7 +72,7 @@ client.on('message', message => {
     	let regex = /"(.*?)(?<!\\)"/;
     	
     	//create_slice = create_slice.replace(/\s+/g, "");
-    	let create_cut = create_slice.replace(regex, "");
+    	let create_cut = create_slice.split(regex);
     	message.channel.send(create_cut);
     	create_slice = create_slice.split(/,/);
     	let create_keyword1 = regex.exec(create_slice[0]);
