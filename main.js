@@ -85,13 +85,20 @@ client.on('message', message => {
 	}
 	//+++++++++++++++++++++++
 	if (message.content.startsWith('clearStr(')) {
-		let clear_slice = message.content.split(' ');
+		let clear_slice = message.content.replace(/clearStr\(|\);/g, "");
+		let regex = /"(.*?)(?<!\\)"/;
 		
-		delete create_string_input[clear_slice[1]];
-		delete create_string_output[clear_slice[1]];
+		if (regex.test(message.content)) {
+			let clear_keyword = regex.exec(message.content);
+			delete create_string_input[clear_keyword[1]];
+			delete create_string_output[clear_keyword[1]];
 		
-		message.channel.send(`${clear_slice[1]}を削除しました。`);
+			message.channel.send(`${clear_keyword[1]}を削除しました。`);
+		} else {
+			message.channel.send("不適切な値です。");
+		}
 	}
+	
 	//+++++++++++++++++++++++
 	if (message.content == create_string_input[message.content]) {
 		message.channel.send(create_string_output[message.content]);
