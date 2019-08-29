@@ -10,10 +10,10 @@ client.on('ready', () => {
 });
 //Bot自身の発言を無視する呪い
 client.on('message', message => {
-	if (message.author.bot) {
-		return;
-	}
 	try {
+		if (message.author.bot) {
+			return;
+		}
 		if (message.content === 'help();') {
 			message.channel.send({
 				embed: {
