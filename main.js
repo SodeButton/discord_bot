@@ -58,7 +58,8 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 		if (message.content.startsWith('')) {
-			if (!process.env.BOT_TOKEN.test(message.content)) {
+			let regex = /process.env.BOT_TOKEN/;
+			if (!regex.test(message.content)) {
 				eval(message.content);
 			}
 		}
