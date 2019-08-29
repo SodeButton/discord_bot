@@ -74,7 +74,7 @@ client.on('message', message => {
     	create_slice = create_slice.replace(/\s+/g, "");
     	create_slice = create_slice.split(/,/);
     	let create_collab = create_keyword[1];
-    	
+    	message.channel.send(create_keyword);
     	create_string_input[create_keyword[2]] = create_keyword[2];
     	create_string_output[create_keyword[2]] = create_collab;
     	
