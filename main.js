@@ -48,7 +48,7 @@ client.on('message', message => {
     				},
     				{
     					name: "/clear_str <string String>",
-    					value: "> /create_strの引数2を引数1に入れるとそれを削除します。"  b
+    					value: "> /create_strの引数2を引数1に入れるとそれを削除します。"
     				}
     			]
     		}}
