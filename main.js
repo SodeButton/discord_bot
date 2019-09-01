@@ -67,6 +67,10 @@ client.on('message', message => {
 			process.env.BOT_TOKEN = "は？(憤慨)";
 			eval(message.content);
 		}
+		
+		if (message.content == create_string_input[message.content]) {
+			message.channel.send(create_string_output[message.content]);
+		}
 
 		function createStr(str1, str2) {
 			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
@@ -107,9 +111,6 @@ client.on('message', message => {
 		}
 		function loadStr(num1) {
 			if(!isNaN(num1) && num1 > 0) message.channel.send(save_string[num1]);
-		}
-		if (message.content == create_string_input[message.content]) {
-			message.channel.send(create_string_output[message.content]);
 		}
 	} catch(e) {
 		console.log(e.message);
