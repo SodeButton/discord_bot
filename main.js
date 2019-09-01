@@ -11,12 +11,7 @@ client.on('ready', () => {
 //Bot自身の発言を無視する呪い
 client.on('message', message => {
 	try {
-		let token = message.content.indexOf(process.env.BOT_TOKEN);
-		if (token !== -1) {
-			message.channel.bulkDelete(2);
-			message.channel.send("は？(憤慨)");
-			return;
-		}
+		
 		if (message.author.bot) {
 			return;
 		}
@@ -64,10 +59,13 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 		if (message.content.startsWith('')) {
-			//let regex = /BOT_TOKEN/;
-			//if (!regex.test(message.content)) {
-			eval(message.content);
-			//}
+			let regex = /BOT_TOKEN/;
+			if (!regex.test(message.content)) {
+				eval(message.content);
+			}
+			else {
+				message.channel.send("は？(憤慨)");
+			}
 		}
 
 		function createStr(str1, str2) {
