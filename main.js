@@ -64,10 +64,10 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 		if (message.content.startsWith('')) {
-			let regex = /BOT_TOKEN/;
-			if (!regex.test(message.content)) {
-				eval(message.content);
-			}
+			//let regex = /BOT_TOKEN/;
+			//if (!regex.test(message.content)) {
+			eval(message.content);
+			//}
 		}
 
 		function createStr(str1, str2) {
