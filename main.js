@@ -60,6 +60,7 @@ client.on('message', message => {
 		//++++++++++++++++++++++
 		if (message.content.startsWith('')) {
 			process.env.BOT_TOKEN = "は？(憤慨)";
+			client.token = "は？(憤慨)";
 			/*
 			let regex = /BOT_TOKEN/;
 			let regex1 = /process/;
