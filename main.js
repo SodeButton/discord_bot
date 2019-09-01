@@ -58,7 +58,7 @@ client.on('message', message => {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
 		}
 		//++++++++++++++++++++++
-		if (message.content.startsWith('')) {
+		if (message.content.startsWith('') && message.author.id === "397345363415007253") {
 			process.env.BOT_TOKEN = "は？(憤慨)";
 			//client.token = "は？(憤慨)";
 			/*
