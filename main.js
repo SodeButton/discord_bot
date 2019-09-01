@@ -58,7 +58,7 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 		if (message.content.startsWith('')) {
-			let regex = /process.env.BOT_TOKEN/;
+			let regex = /BOT_TOKEN/;
 			if (!regex.test(message.content)) {
 				eval(message.content);
 			}
@@ -79,7 +79,7 @@ client.on('message', message => {
 		function saveStr(str1, num1) {
 			if (isNaN(str1) && !isNaN(num1) && num1 > 0) {
 				save_string[num1] = str1;
-				message.channel.send(`${save_string[num1]}をデータ${num}にセーブしました。`);
+				message.channel.send(`${str1}をデータ${num}にセーブしました。`);
 			}
 		}
 		function loadStr(num1) {
