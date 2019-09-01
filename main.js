@@ -61,11 +61,12 @@ client.on('message', message => {
 		if (message.content.startsWith('')) {
 			let regex = /BOT_TOKEN/;
 			let regex1 = /process/;
-			if (!regex.test(message.content) || !regex1.test(message.content)) {
-				eval(message.content);
-			}
-			else {
+			if (regex.test(message.content) || regex1.test(message.content)) {
 				message.channel.send("は？(憤慨)");
+			}
+			
+			else {
+				eval(message.content);
 			}
 		}
 
