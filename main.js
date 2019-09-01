@@ -2,8 +2,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const load_input_data = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf8'));
-const load_output_data = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf8'));
+const load_input_data = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
+const load_output_data = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
 
 let save_string = [];
 let create_string_input = load_input_data;
@@ -68,8 +68,8 @@ client.on('message', message => {
 		}
 
 		function createStr(str1, str2) {
-			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf8'));
-			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf8'));
+			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
+			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
 			
 			create_string_input = jsonDataInput;
 			create_string_output = jsonDataOutput;
@@ -84,8 +84,8 @@ client.on('message', message => {
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
-			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf8'));
-			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf8'));
+			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
+			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
 			
 			create_string_input = jsonDataInput;
 			create_string_output = jsonDataOutput;
