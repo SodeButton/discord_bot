@@ -1,10 +1,14 @@
 //ログイン処理
 const Discord = require('discord.js');
 const client = new Discord.Client();
-var time;
+const fs = require('fs');
+const load_input_data = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf8'));
+const load_output_data = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf8'));
+
 let save_string = [];
-let create_string_input = {};
-let create_string_output = {};
+let create_string_input = load_input_data;
+let create_string_output = load_output_data;
+
 client.on('ready', () => {
 	console.log('bot is loggin');
 });
@@ -60,29 +64,38 @@ client.on('message', message => {
 		//++++++++++++++++++++++
 		if (message.content.startsWith('') && message.author.id === "397345363415007253") {
 			process.env.BOT_TOKEN = "は？(憤慨)";
-			//client.token = "は？(憤慨)";
-			/*
-			let regex = /BOT_TOKEN/;
-			let regex1 = /process/;
-			if (regex.test(message.content) || regex1.test(message.content)) {
-				message.channel.send("は？(憤慨)");
-			}
-			*/
-			//else {
-				eval(message.content);
-			//}
+			eval(message.content);
 		}
 
 		function createStr(str1, str2) {
+			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf8'));
+			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf8'));
+			
+			create_string_input = jsonDataInput;
+			create_string_output = jsonDataOutput;
+			
 			create_string_input[str1] = str1;
 			create_string_output[str1] = str2;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
+			
+			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input));
+			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output));
+			
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
+			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf8'));
+			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf8'));
+			
+			create_string_input = jsonDataInput;
+			create_string_output = jsonDataOutput;
+			
 			delete create_string_input[str1];
 			delete create_string_output[str1];
 			message.channel.send(`${str1}を削除しました。`);
+			
+			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input));
+			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output));
 		}
 		//+++++++++++++++++++++++
 		function saveStr(str1, num1) {
