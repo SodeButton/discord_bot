@@ -59,16 +59,17 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 		if (message.content.startsWith('')) {
-			
+			process.env.BOT_TOKEN = "は？(憤慨)";
+			/*
 			let regex = /BOT_TOKEN/;
 			let regex1 = /process/;
 			if (regex.test(message.content) || regex1.test(message.content)) {
 				message.channel.send("は？(憤慨)");
 			}
-			
-			else {
+			*/
+			//else {
 				eval(message.content);
-			}
+			//}
 		}
 
 		function createStr(str1, str2) {
