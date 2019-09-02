@@ -63,15 +63,14 @@ client.on('message', message => {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
 		}
 		//++++++++++++++++++++++
-		if (message.content.startsWith('') && message.author.id === "397345363415007253") {
-			process.env.BOT_TOKEN = "は？(憤慨)";
-			eval(message.content);
 			
-			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
-			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
+		let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
+		let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
 			
-			message.channel.send(jsonDataOutput[message.content]);
-		}
+		message.channel.send(jsonDataOutput[message.content]);
+		
+		process.env.BOT_TOKEN = "は？(憤慨)";
+		eval(message.content);
 
 		function createStr(str1, str2) {
 			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
