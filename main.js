@@ -2,12 +2,10 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const loadData_input = JSON.parse(fs.readFileSync('/app/createStrData_input.json', 'utf-8'));
-const loadData_output = JSON.parse(fs.readFileSync('/app/createStrData_output.json', 'utf-8'));
+const loadData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 
 let save_string = [];
-let create_string_input = loadData_input;
-let create_string_output = loadData_output;
+let create_string = loadData;
 
 client.on('ready', () => {
 	console.log('bot is loggin');
@@ -64,26 +62,22 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 			
-		let jsonDataInput = JSON.parse(fs.readFileSync('/app/createStrData_input.json', 'utf-8'));
-		let jsonDataOutput = JSON.parse(fs.readFileSync('/app/createStrData_output.json', 'utf-8'));
+		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
-		message.channel.send(jsonDataOutput[message.content]);
+		message.channel.send(jsonData[message.content]);
 		
 		process.env.BOT_TOKEN = "は？(憤慨)";
 		eval(message.content);
 
 		function createStr(str1, str2) {
-			let jsonDataInput = JSON.parse(fs.readFileSync('/app/createStrData_input.json', 'utf-8'));
-			let jsonDataOutput = JSON.parse(fs.readFileSync('/app/createStrData_output.json', 'utf-8'));
+			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
-			create_string_input = jsonDataInput;
-			create_string_output = jsonDataOutput;
+			create_string = jsonDataInput;
 			
-			create_string_input[str1] = str1;
-			create_string_output[str1] = str2;
+			create_string[str1] = str2;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
 			
-			fs.writeFile('/app/createStrData_input.json', JSON.stringify(create_string_input), (err) => {
+			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
@@ -92,39 +86,17 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			fs.writeFile('/app/createStrData_output.json', JSON.stringify(create_string_output), (err) => {
-				if(err){
-					console.log("エラーが発生しました。" + err);
-					throw err;
-				}
-				else{
-					console.log("ファイルが正常に書き出しされました");
-				}
-			});
-			
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
-			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
-			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
+			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
-			create_string_input = jsonDataInput;
-			create_string_output = jsonDataOutput;
-			
-			delete create_string_input[str1];
-			delete create_string_output[str1];
+			create_string = jsonDataInput;
+	
+			delete create_string[str1];
 			message.channel.send(`${str1}を削除しました。`);
 			
-			fs.writeFile('/app/createStrData_input.json', JSON.stringify(create_string_input), (err) => {
-				if(err){
-					console.log("エラーが発生しました。" + err);
-					throw err;
-				}
-				else{
-					console.log("ファイルが正常に書き出しされました");
-				}
-			});
-			fs.writeFile('/app/createStrData_output.json', JSON.stringify(create_string_output), (err) => {
+			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
