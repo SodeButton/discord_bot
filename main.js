@@ -72,7 +72,7 @@ client.on('message', message => {
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
-			create_string = jsonDataInput;
+			create_string = jsonData;
 			
 			create_string[str1] = str2;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
