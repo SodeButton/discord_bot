@@ -66,10 +66,16 @@ client.on('message', message => {
 		if (message.content.startsWith('') && message.author.id === "397345363415007253") {
 			process.env.BOT_TOKEN = "は？(憤慨)";
 			eval(message.content);
-		}
-		
-		if (message.content == create_string_input[message.content]) {
-			message.channel.send(create_string_output[message.content]);
+			
+			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
+			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
+			
+			create_string_input = jsonDataInput;
+			create_string_output = jsonDataOutput;
+			
+			if (message.content == create_string_input[message.content]) {
+				message.channel.send(create_string_output[message.content]);
+			}
 		}
 
 		function createStr(str1, str2) {
@@ -98,7 +104,7 @@ client.on('message', message => {
 					throw err;
 				}
 				else{
-				console.log("ファイルが正常に書き出しされました");
+					console.log("ファイルが正常に書き出しされました");
 				}
 			});
 			
@@ -115,8 +121,24 @@ client.on('message', message => {
 			delete create_string_output[str1];
 			message.channel.send(`${str1}を削除しました。`);
 			
-			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input));
-			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output));
+			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input), (err) => {
+				if(err){
+					console.log("エラーが発生しました。" + err);
+					throw err;
+				}
+				else{
+					console.log("ファイルが正常に書き出しされました");
+				}
+			});
+			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output), (err) => {
+				if(err){
+					console.log("エラーが発生しました。" + err);
+					throw err;
+				}
+				else{
+					console.log("ファイルが正常に書き出しされました");
+				}
+			});
 		}
 		//+++++++++++++++++++++++
 		function saveStr(str1, num1) {
