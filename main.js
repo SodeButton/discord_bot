@@ -70,9 +70,7 @@ client.on('message', message => {
 			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
 			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
 			
-			if (message.content == jsonDataInput[message.content]) {
-				message.channel.send(jsonDataOutput[message.content]);
-			}
+			message.channel.send(jsonDataOutput[message.content]);
 		}
 
 		function createStr(str1, str2) {
