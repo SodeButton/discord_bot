@@ -83,8 +83,24 @@ client.on('message', message => {
 			create_string_output[str1] = str2;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
 			
-			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input));
-			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output));
+			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input), (err) => {
+				if(err){
+					console.log("エラーが発生しました。" + err);
+					throw err;
+				}
+				else{
+					console.log("ファイルが正常に書き出しされました");
+				}
+			});
+			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output), (err) => {
+				if(err){
+					console.log("エラーが発生しました。" + err);
+					throw err;
+				}
+				else{
+				console.log("ファイルが正常に書き出しされました");
+				}
+			});
 			
 		}
 		//+++++++++++++++++++++++
