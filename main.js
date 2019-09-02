@@ -2,12 +2,12 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const loadData_input = fs.readFileSync("./createStrData_input.json", "utf-8");
-const loadData_output = fs.readFileSync("./createStrData_output.json", "utf-8");
+const loadData_input = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
+const loadData_output = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
 
 let save_string = [];
-let create_string_input = JSON.parse(loadData_input);
-let create_string_output = JSON.parse(loadData_output);
+let create_string_input = loadData_input;
+let create_string_output = loadData_output;
 
 client.on('ready', () => {
 	console.log('bot is loggin');
