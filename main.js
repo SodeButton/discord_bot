@@ -2,8 +2,8 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const loadData_input = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
-const loadData_output = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
+const loadData_input = JSON.parse(fs.readFileSync('/app/createStrData_input.json', 'utf-8'));
+const loadData_output = JSON.parse(fs.readFileSync('/app/createStrData_output.json', 'utf-8'));
 
 let save_string = [];
 let create_string_input = loadData_input;
@@ -64,8 +64,8 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 			
-		let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
-		let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
+		let jsonDataInput = JSON.parse(fs.readFileSync('/app/createStrData_input.json', 'utf-8'));
+		let jsonDataOutput = JSON.parse(fs.readFileSync('/app/createStrData_output.json', 'utf-8'));
 			
 		message.channel.send(jsonDataOutput[message.content]);
 		
@@ -73,8 +73,8 @@ client.on('message', message => {
 		eval(message.content);
 
 		function createStr(str1, str2) {
-			let jsonDataInput = JSON.parse(fs.readFileSync('./createStrData_input.json', 'utf-8'));
-			let jsonDataOutput = JSON.parse(fs.readFileSync('./createStrData_output.json', 'utf-8'));
+			let jsonDataInput = JSON.parse(fs.readFileSync('/app/createStrData_input.json', 'utf-8'));
+			let jsonDataOutput = JSON.parse(fs.readFileSync('/app/createStrData_output.json', 'utf-8'));
 			
 			create_string_input = jsonDataInput;
 			create_string_output = jsonDataOutput;
@@ -83,7 +83,7 @@ client.on('message', message => {
 			create_string_output[str1] = str2;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
 			
-			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input), (err) => {
+			fs.writeFile('/app/createStrData_input.json', JSON.stringify(create_string_input), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
@@ -92,7 +92,7 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output), (err) => {
+			fs.writeFile('/app/createStrData_output.json', JSON.stringify(create_string_output), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
@@ -115,7 +115,7 @@ client.on('message', message => {
 			delete create_string_output[str1];
 			message.channel.send(`${str1}を削除しました。`);
 			
-			fs.writeFile('./createStrData_input.json', JSON.stringify(create_string_input), (err) => {
+			fs.writeFile('/app/createStrData_input.json', JSON.stringify(create_string_input), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
@@ -124,7 +124,7 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			fs.writeFile('./createStrData_output.json', JSON.stringify(create_string_output), (err) => {
+			fs.writeFile('/app/createStrData_output.json', JSON.stringify(create_string_output), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
