@@ -74,7 +74,7 @@ client.on('message', message => {
 			
 			create_string = jsonData;
 			
-			create_string[str1] = str2;
+			create_string[str2] = str1;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
 			
 			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
