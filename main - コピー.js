@@ -2,7 +2,7 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
-const loadData = JSON.parse(fs.readFileSync('https://github.com/SodeButton/discord_bot/blob/master/createStrData.json', 'utf-8'));
+const loadData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 
 let save_string = [];
 let create_string = loadData;
@@ -62,7 +62,7 @@ client.on('message', message => {
 		}
 		//++++++++++++++++++++++
 			
-		let jsonData = JSON.parse(fs.readFileSync('https://github.com/SodeButton/discord_bot/blob/master/createStrData.json', 'utf-8'));
+		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
 		message.channel.send(jsonData[message.content]);
 		
@@ -70,14 +70,14 @@ client.on('message', message => {
 		eval(message.content);
 
 		function createStr(str1, str2) {
-			let jsonData = JSON.parse(fs.readFileSync('https://github.com/SodeButton/discord_bot/blob/master/createStrData.json', 'utf-8'));
+			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
 			create_string = jsonData;
 			
 			create_string[str2] = str1;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
 			
-			fs.writeFile('https://github.com/SodeButton/discord_bot/blob/master/createStrData.json', JSON.stringify(create_string), (err) => {
+			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
@@ -89,14 +89,14 @@ client.on('message', message => {
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
-			let jsonData = JSON.parse(fs.readFileSync('https://github.com/SodeButton/discord_bot/blob/master/createStrData.json', 'utf-8'));
+			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
 			create_string = jsonDataInput;
 	
 			delete create_string[str1];
 			message.channel.send(`${str1}を削除しました。`);
 			
-			fs.writeFile('https://github.com/SodeButton/discord_bot/blob/master/createStrData.json', JSON.stringify(create_string), (err) => {
+			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
 					throw err;
