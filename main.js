@@ -22,7 +22,7 @@ client.on('message', message => {
 			message.channel.send({
 				embed: {
 					title: 'ヘルプだよ！',
-					color: 7506394,
+					color: 7506374,
 					fields: [{
 						name: "help();",
 						value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
