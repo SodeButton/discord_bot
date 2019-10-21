@@ -16,15 +16,11 @@ client.on('ready', () => {
 client.on('message', message => {
 	try {
 		
-		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 		let logData = fs.readFileSync('/app/logData.txt', 'utf-8');
-		var messageTime = message.createdAt;
-		//var removeMessage = "GMT+0000 (Coordinated Universal Time)";
-		//var regExp = new RegExp(removeMessage, "g");
-		//var messageTimeR = messageTime.replace(regExp, "");
-		//messageTime = messageTime.replace(/GMT+0000 \(Coordinated Universal Time\)/g, "");
+		var messageTime = "" + message.createdAt;
+		var removeMessage = messageTime.replace("GMT+0000 (Coordinated Universal Time)", "");
 		
-		logData = logData + messageTime + ": " + message.author.username + " >>> 「" + message.content + "」\n";
+		logData = logData + "\n" + removeMessage + ": " + message.author.username + " >>> 「" + message.content + "」";
 		
 		fs.writeFile('/app/logData.txt', logData, (err) => {
 			if(err){
@@ -85,6 +81,8 @@ client.on('message', message => {
 			message.channel.send({files: ['/app/logData.txt']});
 		}
 		//++++++++++++++++++++++
+		
+		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
 		message.channel.send(jsonData[message.content]);
 		
