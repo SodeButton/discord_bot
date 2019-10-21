@@ -68,10 +68,10 @@ client.on('message', message => {
 		var messageTime = message.createdAt;
 		var removeMessage = "GMT+0000 (Coordinated Universal Time)";
 		var regExp = new RegExp(removeMessage, "g");
-		messageTime = messageTime.replace(regExp, "");
+		var messageTimeR = messageTime.replace(regExp, "");
 		//messageTime = messageTime.replace(/GMT+0000 \(Coordinated Universal Time\)/g, "");
 		
-		logData = logData + messageTime + ": " + message.author.username + " >>> 「" + message.content + "」\n";
+		logData = logData + messageTimeR + ": " + message.author.username + " >>> 「" + message.content + "」\n";
 		
 		fs.writeFile('/app/logData.txt', logData, (err) => {
 			if(err){
