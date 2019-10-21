@@ -3,6 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const fs = require('fs');
 const loadData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
+const LogData = fs.readFileSync('/app/logData.txt', 'utf-8');
 
 let save_string = [];
 let create_string = loadData;
@@ -63,17 +64,26 @@ client.on('message', message => {
 		//++++++++++++++++++++++
 			
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
+		let logData = fs.readFileSync('/app/logData.txt', 'utf-8');
 			
 		message.channel.send(jsonData[message.content]);
 		
 		process.env.BOT_TOKEN = "は？(憤慨)";
 		
-		try {
-			eval(message.content);
-		} catch(e) {
-			client.channels.get("602862162352013328").send(e.message);
-        }
-
+		eval(message.content);
+		
+		logData = logData + message.createdAt + ": " + message.author + ">>>" + message.content + "\n";
+		
+		fs.writeFile('/app/logData.txt', logData, (err) => {
+			if(err){
+				console.log("エラーが発生しました。" + err);
+				throw err;
+			}
+			else{
+				console.log("ファイルが正常に書き出しされました");
+			}
+		});
+		
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
