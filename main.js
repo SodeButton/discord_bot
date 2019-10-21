@@ -89,8 +89,8 @@ client.on('message', message => {
 				}
 			});
 			
-    		client.channels.get("602862161894572051").send({files: ['/app/createStrData.json']});
-			//message.author.send({files: ['/app/createStrData.json']});
+    		//client.channels.get("602862161894572051").send({files: ['/app/createStrData.json']});
+			message.author.send({files: ['/app/createStrData.json']});
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
