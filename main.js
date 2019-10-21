@@ -68,7 +68,11 @@ client.on('message', message => {
 		
 		process.env.BOT_TOKEN = "は？(憤慨)";
 		
-		eval(message.content);
+		try {
+			eval(message.content);
+		} catch(e) {
+			client.channels.get("602862162352013328").send(e.message);
+        }
 
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
