@@ -86,7 +86,7 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			message.channel.send({files: ['/app/createStrData.json']});
+			message.author.send({files: ['/app/createStrData.json']});
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
