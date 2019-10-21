@@ -66,7 +66,7 @@ client.on('message', message => {
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 		let logData = fs.readFileSync('/app/logData.txt', 'utf-8');
 		
-		logData = logData + message.createdAt + ": " + message.author + ">>>" + message.content + "\n";
+		logData = logData + message.createdAt + ": " + message.author.username + " >>> 「" + message.content + "」\n";
 		
 		fs.writeFile('/app/logData.txt', logData, (err) => {
 			if(err){
