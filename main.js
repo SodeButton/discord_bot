@@ -88,8 +88,8 @@ client.on('message', message => {
 				}
 			});
 			
-    		//client.channels.get("602862161894572051").send({files: ['/app/createStrData.json']});
-			message.author.send({files: ['/app/createStrData.json']});
+    		client.channels.get("602862162352013328").send({files: ['/app/createStrData.json']});
+			//message.author.send({files: ['/app/createStrData.json']});
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
@@ -109,6 +109,8 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
+			
+			client.channels.get("602862162352013328").send({files: ['/app/createStrData.json']});
 		}
 		//+++++++++++++++++++++++
 		function saveStr(str1, num1) {
