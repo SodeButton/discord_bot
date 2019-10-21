@@ -61,6 +61,9 @@ client.on('message', message => {
 		if (message.content === 'ぶっとn') {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
 		}
+		if (message.content === 'log();') {
+			message.channel.send({files: ['/app/logData.txt']});
+		}
 		//++++++++++++++++++++++
 			
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
