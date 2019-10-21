@@ -32,6 +32,10 @@ client.on('message', message => {
 			}
 		});
 		
+		client.user.setActivity('BOTN ver 1.0.0', {
+    		type: 'PLAYING'
+  	  });
+		
 		if (message.author.bot) {
 			return;
 		}
