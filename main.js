@@ -67,6 +67,8 @@ client.on('message', message => {
 		message.channel.send(jsonData[message.content]);
 		
 		process.env.BOT_TOKEN = "は？(憤慨)";
+		client.token = "は？(憤慨)";
+		
 		eval(message.content);
 
 		function createStr(str1, str2) {
@@ -86,13 +88,15 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			message.author.send({files: ['/app/createStrData.json']});
+			
+    		client.channels.get("602862161894572051").send({files: ['/app/createStrData.json']});
+			//message.author.send({files: ['/app/createStrData.json']});
 		}
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
-			create_string = jsonDataInput;
+			create_string = jsonData;
 	
 			delete create_string[str1];
 			message.channel.send(`${str1}を削除しました。`);
