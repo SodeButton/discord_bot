@@ -65,12 +65,6 @@ client.on('message', message => {
 			
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 		let logData = fs.readFileSync('/app/logData.txt', 'utf-8');
-			
-		message.channel.send(jsonData[message.content]);
-		
-		process.env.BOT_TOKEN = "は？(憤慨)";
-		
-		eval(message.content);
 		
 		logData = logData + message.createdAt + ": " + message.author + ">>>" + message.content + "\n";
 		
@@ -83,6 +77,12 @@ client.on('message', message => {
 				console.log("ファイルが正常に書き出しされました");
 			}
 		});
+			
+		message.channel.send(jsonData[message.content]);
+		
+		process.env.BOT_TOKEN = "は？(憤慨)";
+		
+		eval(message.content);
 		
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
