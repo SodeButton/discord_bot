@@ -65,7 +65,10 @@ client.on('message', message => {
 			
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 		let logData = fs.readFileSync('/app/logData.txt', 'utf-8');
-		let messageTime = message.createdAt;
+		var messageTime = message.createdAt;
+		var removeMessage = "GMT+0000 (Coordinated Universal Time)";
+		var regExp = new RegExp(removeMessage, "g");
+		messageTime = messageTime.replace(regExp, "");
 		//messageTime = messageTime.replace(/GMT+0000 \(Coordinated Universal Time\)/g, "");
 		
 		logData = logData + messageTime + ": " + message.author.username + " >>> 「" + message.content + "」\n";
