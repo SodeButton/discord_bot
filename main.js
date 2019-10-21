@@ -67,7 +67,6 @@ client.on('message', message => {
 		message.channel.send(jsonData[message.content]);
 		
 		process.env.BOT_TOKEN = "は？(憤慨)";
-		client.token = "は？(憤慨)";
 		
 		eval(message.content);
 
