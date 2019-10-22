@@ -97,7 +97,7 @@ client.on('message', message => {
 		setInterval(function() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 			client.channels.get("635846859700830208").send({files: ['/app/logData.txt']});
-		}, 600000);
+		}, 1800000);
 		
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
