@@ -13,10 +13,6 @@ client.on('ready', () => {
 	
 });
 
-setInterval(function() {
-	log_backup();
-}, 1800000);
-
 //Bot自身の発言を無視する呪い
 client.on('message', message => {
 	try {
@@ -99,7 +95,7 @@ client.on('message', message => {
 		
 		eval(message.content);
 		
-		function log_backup() {
+		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 			client.channels.get("635846859700830208").send({files: ['/app/logData.txt']});
 		}
