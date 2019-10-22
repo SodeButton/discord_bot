@@ -12,6 +12,11 @@ client.on('ready', () => {
 	console.log('bot is loggin');
 	
 });
+
+setInterval(function() {
+	log_backup();
+}, 1800000);
+
 //Bot自身の発言を無視する呪い
 client.on('message', message => {
 	try {
@@ -94,10 +99,10 @@ client.on('message', message => {
 		
 		eval(message.content);
 		
-		setInterval(function() {
+		function log_backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 			client.channels.get("635846859700830208").send({files: ['/app/logData.txt']});
-		}, 1800000);
+		}
 		
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
