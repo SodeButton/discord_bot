@@ -1,7 +1,9 @@
 //ログイン処理
 const Discord = require('discord.js');
-const client = new Discord.Client();
+const mysql = require('mysql');
 const fs = require('fs');
+
+const client = new Discord.Client();
 const loadData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 const LogData = fs.readFileSync('/app/logData.txt', 'utf-8');
 
