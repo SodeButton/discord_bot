@@ -121,6 +121,7 @@ client.on('message', message => {
     		client.channels.get("602862162352013328").send({files: ['/app/createStrData.json']});
 			//message.author.send({files: ['/app/createStrData.json']});
 		}
+		
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
@@ -142,6 +143,7 @@ client.on('message', message => {
 			
 			client.channels.get("602862162352013328").send({files: ['/app/createStrData.json']});
 		}
+		
 		//+++++++++++++++++++++++
 		function saveStr(str1, num1) {
 			if (isNaN(str1) && !isNaN(num1) && num1 > 0) {
