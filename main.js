@@ -102,6 +102,13 @@ client.on('message', message => {
 			client.channels.get("635846859700830208").send({files: ['/app/logData.txt']});
 		}
 		
+		function set_createStr(str1) {
+			if(str1 != '') {
+				let jsonData = JSON.parse(str1);
+				create_string = jsonData;
+			}
+		}
+		
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 			
