@@ -127,7 +127,7 @@ client.on('message', message => {
 				}
 			});
 			
-    		client.channels.get("602862162352013328").send({files: ['/app/createStrData.json']});
+    		client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 			//message.author.send({files: ['/app/createStrData.json']});
 		}
 		
@@ -150,7 +150,7 @@ client.on('message', message => {
 				}
 			});
 			
-			client.channels.get("602862162352013328").send({files: ['/app/createStrData.json']});
+			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 		}
 		
 		//+++++++++++++++++++++++
@@ -165,6 +165,7 @@ client.on('message', message => {
 		}
 	} catch(e) {
 		console.log(e.message);
+		client.channels.get("635846859700830208").send(e.message);
 	}
 });
 client.login(process.env.BOT_TOKEN);
