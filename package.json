@@ -1,7 +1,6 @@
 {
   "name": "discord_bot",
   "version": "1.0.0",
-  "description": "",
   "main": "main.js",
   "scripts": {
     "start": "node main.js"
@@ -10,6 +9,17 @@
   "license": "ISC",
   "dependencies": {
     "discord.js": "^11.5.1",
+    "dotenv": "^8.2.0",
     "mysql": "^2.17.1"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SodeButton/discord_bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/SodeButton/discord_bot/issues"
+  },
+  "homepage": "https://github.com/SodeButton/discord_bot#readme",
+  "description": ""
 }
