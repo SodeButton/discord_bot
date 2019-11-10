@@ -12,19 +12,19 @@ let create_string = loadData;
 
 client.on('ready', () => {
 	console.log('bot is loggin');
-	
+
 });
 
 //Bot自身の発言を無視する呪い
 client.on('message', message => {
 	try {
-		
+
 		let logData = fs.readFileSync('/app/logData.txt', 'utf-8');
 		var messageTime = "" + message.createdAt;
 		var removeMessage = messageTime.replace("GMT+0000 (Coordinated Universal Time)", "");
-		
+
 		logData = logData + "\n" + removeMessage + ": " + message.author.username + " >>> 「" + message.content + "」";
-		
+
 		fs.writeFile('/app/logData.txt', logData, (err) => {
 			if(err){
 				console.log("エラーが発生しました。" + err);
@@ -34,11 +34,11 @@ client.on('message', message => {
 				console.log("ファイルが正常に書き出しされました");
 			}
 		});
-		
+
 		client.user.setActivity('BOTN ver 1.0.0', {
     		type: 'PLAYING'
   	  	});
-		
+
 		if (message.author.bot) {
 			return;
 		}
@@ -88,33 +88,33 @@ client.on('message', message => {
 			message.channel.send({files: ['/app/logData.txt']});
 		}
 		//++++++++++++++++++++++
-		
+
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
-			
+
 		message.channel.send(jsonData[message.content]);
-		
+
 		eval(message.content);
-		
+
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 			client.channels.get("635846859700830208").send({files: ['/app/logData.txt']});
 		}
-		
+
 		function set_createStr(str1) {
 			if(str1 != '') {
 				let jsonData = JSON.parse(str1);
 				create_string = jsonData;
 			}
 		}
-		
+
 		function createStr(str1, str2) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
-			
+
 			create_string = jsonData;
-			
+
 			create_string[str2] = str1;
 			message.channel.send(`｢${str1}｣を｢${str2}｣と置きました。`);
-			
+
 			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
@@ -124,20 +124,20 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			
+
     		client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 			//message.author.send({files: ['/app/createStrData.json']});
 		}
-		
+
 		//+++++++++++++++++++++++
 		function clearStr(str1) {
 			let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
-			
+
 			create_string = jsonData;
-	
+
 			delete create_string[str1];
 			message.channel.send(`${str1}を削除しました。`);
-			
+
 			fs.writeFile('/app/createStrData.json', JSON.stringify(create_string), (err) => {
 				if(err){
 					console.log("エラーが発生しました。" + err);
@@ -147,10 +147,10 @@ client.on('message', message => {
 					console.log("ファイルが正常に書き出しされました");
 				}
 			});
-			
+
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
 		}
-		
+
 		//+++++++++++++++++++++++
 		function saveStr(str1, num1) {
 			if (isNaN(str1) && !isNaN(num1) && num1 > 0) {
@@ -162,8 +162,8 @@ client.on('message', message => {
 			if(!isNaN(num1) && num1 > 0) message.channel.send(save_string[num1]);
 		}
 	} catch(e) {
-		console.log(e.message);
-		client.channels.get("635846859700830208").send(e.message);
+		// console.log(e.message);
+		// client.channels.get("635846859700830208").send(e.message);
 	}
 });
 client.login(process.env.BOT_TOKEN);
