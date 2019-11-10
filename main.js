@@ -162,7 +162,7 @@ client.on('message', message => {
 			if(!isNaN(num1) && num1 > 0) message.channel.send(save_string[num1]);
 		}
 	} catch(e) {
-		// console.log(e.message);
+		console.log(e.message);
 		// client.channels.get("635846859700830208").send(e.message);
 	}
 });
