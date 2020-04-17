@@ -3,7 +3,6 @@
 const Discord = require('discord.js');
 const fs = require('fs');
 const client = new Discord.Client();
-const token = 'NjAyODYwMTY0ODg1OTA1NDE5.XfWUug.ZUK8XNHSZE6lwdFY1SJwrP-xrys';
 var time;
 
 client.on('ready', () => {
@@ -389,4 +388,4 @@ client.on('message', message => {
 		client.channels.get("635846859700830208").send({files: ['./logData.txt']});
 	}
 });
-client.login(token);
+client.login(process.env.BOT_TOKEN);
