@@ -92,8 +92,10 @@ client.on('message', message => {
 		let jsonData = JSON.parse(fs.readFileSync('/app/createStrData.json', 'utf-8'));
 
 		message.channel.send(jsonData[message.content]);
-
-		eval(message.content);
+		
+		if(message.auther.id = "397345363415007253") {
+			eval(message.content);
+		}
 
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
