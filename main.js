@@ -93,7 +93,7 @@ client.on('message', message => {
 
 		message.channel.send(jsonData[message.content]);
 		
-		if(message.auther.id = "397345363415007253") {
+		if(message.auther.id == "397345363415007253") {
 			eval(message.content);
 		}
 
