@@ -51,8 +51,8 @@ client.on('message', message => {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾎﾞｯﾄnｰﾝ');
 		}
 	        
-		//if(message.author.id == "397345363415007253") eval(message.content);
-		if(message.content.replace(/^eval\((.*?)\);$/, '') == 'eval();') eval(message.content.match(/^eval\((.*?)\);$/));
+		if(message.author.id == "397345363415007253") eval(message.content);
+		//if(message.content.replace(/^eval\((.*?)\);$/, '') == 'eval();') eval(message.content.match(/^eval\((.*?)\);$/));
                 
 
 		function backup() {
