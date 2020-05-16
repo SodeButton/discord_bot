@@ -79,7 +79,7 @@ client.on('message', message => {
 
 	} catch(e) {
 		//console.log(e.message);
-		message.channel.send(e.message);
+		if(debug_select) message.channel.send(e.message);
 	}
 });
 client.login(process.env.BOT_TOKEN);
