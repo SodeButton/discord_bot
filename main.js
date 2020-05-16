@@ -53,9 +53,12 @@ client.on('message', message => {
 		}
 	        
 		//if(message.author.id == "397345363415007253") eval(message.content);
-                var eval_function = message.content.match(/^eval\(\);/)[1];
+                var eval_function = '';
+                try {
+                    eval_function = message.content.match(/^eval\(\);/)[1];
+                }
 		if(message.content.replace(eval_function, '') == 'eval();') eval(eval_function);
-                eval(message.content);
+                //eval(message.content);
 
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
