@@ -50,13 +50,10 @@ client.on('message', message => {
                 if (message.content === 'ぼっとn') {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾎﾞｯﾄnｰﾝ');
 		}
-		if (message.content === 'log();') {
-			message.channel.send({files: ['/app/logData.txt']});
-		}
 	        
 		//if(message.author.id == "397345363415007253") eval(message.content);
-		if(message.content.replace(/^eval\((.*?)\);$/, '') == 'eval();')
-                        eval(message.content.match(/^eval\((.*?)\);$/));
+		if(message.content.replace(/^eval\((.*?)\);$/, '') == 'eval();') eval(message.content.match(/^eval\((.*?)\);$/));
+                
 
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
@@ -68,8 +65,8 @@ client.on('message', message => {
 		}
 
 	} catch(e) {
-		console.log(e.message);
-		// client.channels.get("635846859700830208").send(e.message);
+		//console.log(e.message);
+		message.channel.send(e.message);
 	}
 });
 client.login(process.env.BOT_TOKEN);
