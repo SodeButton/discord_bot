@@ -67,7 +67,7 @@ client.on('message', message => {
 		}
 
                 function debug() {
-                        if(debug_select) {
+                        if(!debug_select) {
                                 debug_select = true;
                                 message.channel.send("error messages: on");
                         }
