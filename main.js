@@ -8,6 +8,7 @@ client.on('ready', () => {
 	console.log('bot is loggin');
 
 });
+var debug_select = false;
 
 //Bot自身の発言を無視する呪い
 client.on('message', message => {
@@ -52,9 +53,9 @@ client.on('message', message => {
 		}
 	        
 		//if(message.author.id == "397345363415007253") eval(message.content);
-                var eval_function = message.content.match(/^eval\((.*?)\);$/)[1];
-		if(message.content.replace(eval_function, '') == 'eval();') eval(eval_function);
-                
+                //var eval_function = message.content.match(/^eval\((.*?)\);$/)[1];
+		//if(message.content.replace(eval_function, '') == 'eval();') eval(eval_function);
+                eval(message.content);
 
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
@@ -64,6 +65,17 @@ client.on('message', message => {
 		function say(str) {
 			message.channel.send(str);
 		}
+
+                function debug() {
+                        if(debug_select) {
+                                debug_select = true;
+                                message.channel.send("error messages: on");
+                        }
+                        else {
+                                debug_select = false;
+                                message.channel.send("error messages: off");
+                        }
+                }
 
 	} catch(e) {
 		//console.log(e.message);
