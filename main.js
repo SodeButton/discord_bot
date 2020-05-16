@@ -52,13 +52,9 @@ client.on('message', message => {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾎﾞｯﾄnｰﾝ');
 		}
 	        
-		//if(message.author.id == "397345363415007253") eval(message.content);
-                var eval_function = '';
-                try {
-                    eval_function = message.content.match(/^eval\(\);/)[1];
+		if(message.content.startsWith('eval();')) {
+                    eval(message.content.replace(/^eval\(\);/, ''));
                 }
-		if(message.content.replace(eval_function, '') == 'eval();') eval(eval_function);
-                //eval(message.content);
 
 		function backup() {
 			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
