@@ -53,7 +53,15 @@ client.on('message', message => {
 		}
 	        
 		if(message.content.startsWith('eval();')) {
-                    eval(message.content.replace(/^eval\(\);/, ''));
+			var process = {
+				env : {
+					BOT_TOKEN : "環境変数も表示できないよーっだ！"
+			     	}
+			};
+			var client = {
+				token: "表示させないよーっだ！"
+			};
+                    	eval(message.content.replace(/^eval\(\);/, ''));
                 }
 
 		function backup() {
