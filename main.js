@@ -1,4 +1,5 @@
 //ログイン処理
+'use strict';
 const Discord = require('discord.js');
 const fs = require('fs');
 
@@ -51,10 +52,22 @@ client.on('message', message => {
                 if (message.content === 'ぼっとn') {
 			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾎﾞｯﾄnｰﾝ');
 		}
+		if (message.content === 'うんち') {
+			message.channel.send('うんち');
+		}
 	        
 		if(message.content.startsWith('eval();')) {
-			
-                    	eval(message.content.replace(/^eval\(\);/, ''));
+			var token_error = `
+				var process = {
+					env : {
+						BOT_TOKEN : "環境変数も表示できないよーっだ！"
+					}
+				};
+				var client = {
+					token: "表示できないよーっだ！"
+				};
+			`;
+                    	eval(token_error + message.content.replace(/^eval\(\);/, ''));
                 }
 
 		function backup() {
