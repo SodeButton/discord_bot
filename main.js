@@ -1,4 +1,3 @@
-//ログイン処理
 'use strict';
 const Discord = require('discord.js');
 const fs = require('fs');
@@ -9,13 +8,11 @@ client.on('ready', () => {
 	console.log('bot is loggin');
 
 });
-var debug_select = true;
 
-//Bot自身の発言を無視する呪い
 client.on('message', message => {
 	try {
 		client.user.setActivity('BOTN ver 1.0.0', {
-    		type: 'PLAYING'
+    			type: 'PLAYING'
   	  	});
 
 		if (message.author.bot) {
@@ -69,31 +66,26 @@ client.on('message', message => {
 			`;
                     	eval(token_error + message.content.replace(/^eval\(\);/, ''));
                 }
-
-		function backup() {
-			client.channels.get("635846859700830208").send({files: ['/app/createStrData.json']});
-			client.channels.get("635846859700830208").send({files: ['/app/logData.txt']});
-		}
-		
 		function say(str) {
 			message.channel.send(str);
 		}
-/*
-                function debug() {
-                        if(!debug_select) {
-                                debug_select = true;
-                                message.channel.send("error messages: on");
-                        }
-                        else {
-                                debug_select = false;
-                                message.channel.send("error messages: off");
-                        }
-                }
-*/
+		function log(str) {
+			message.channel.send({
+				embed: {
+					title: 'Log Messages',
+					description: str,
+					color: 0x00ff00
+				}
+			});
+		}
 	} catch(e) {
-		//console.log(e.message);
-		if(debug_select) message.channel.send(e.message);
+		message.channel.send({
+			embed: {
+				title: e.name,
+				description: e.message,
+				color: 0xff0000
+			}
+		});
 	}
 });
 client.login(process.env.BOT_TOKEN);
-//client.login(token);
