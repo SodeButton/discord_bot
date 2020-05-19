@@ -82,7 +82,7 @@ client.on('message', message => {
 		message.channel.send({
 			embed: {
 				title: e.name,
-				description: e.message,
+				description: e.message + e.lineNumber,
 				color: 0xff0000
 			}
 		});
