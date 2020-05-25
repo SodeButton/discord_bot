@@ -47,7 +47,7 @@ client.on('message', message => {
 		}
 		
 		if (message.content === 'unicode();') {
-			message.channel.send("https://sodebutton.github.io/AvastGlia/unicode_converter/index.html");
+			message.channel.send("https://sodebutton.github.io/unicode_converter/");
 		}
 		if (message.content === 'unco();') {
 			message.channel.send("https://unco.co.jp");
