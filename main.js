@@ -25,13 +25,22 @@ client.on('message', message => {
 					color: 7506374,
 					fields: [{
 						name: "help();",
-						value: "> 色々なコマンドを表示するよ！ 今表示しているのがそうだね"
+						value: "色々なコマンドを表示するよ！ 今表示しているのがそうだね\n"
 					}, {
 						name: "unicode();",
-						value: "> Jsonの文字をunicodeに変換してくれるサイトを表示するよ！"
+						value: "Jsonの文字をunicodeに変換してくれるサイトを表示するよ！\n"
 					}, {
 						name: "unco();",
-						value: "> うんこ株式会社です。"
+						value: "うんこ株式会社\n"
+					}, {
+						name: "eval();",
+						value: "JavaScriptを実行できるよ！\n"
+					}, {
+						name: "say(string);",
+						value: "言わせたいことがあればこれを使ってね！(eval();を使ったときのみしか使えないよ！)\n"
+					}, {
+						name: "log(string);",
+						value: "ログを出力するよ！(eval();を使ったときのみしか使えないよ！)\n"
 					}]
 				}
 			});
