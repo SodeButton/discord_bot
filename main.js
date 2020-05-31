@@ -1,7 +1,8 @@
 'use strict';
 const Discord = require('discord.js');
 const fs = require('fs');
-
+let say_messages = "";
+let log_messages = "";
 const client = new Discord.Client();
 
 client.on('ready', () => {
@@ -77,19 +78,23 @@ client.on('message', message => {
 					token: "表示できないよーっだ！"
 				};
 			`;
+			say_messages = "";
+			log_messages = "";
                     	eval(token_error + message.content.replace(/^eval\(\);/, ''));
-                }
-		function say(str) {
-			message.channel.send(str);
-		}
-		function log(str) {
+			message.channel.send(say_messages);
 			message.channel.send({
 				embed: {
 					title: 'Log Messages',
-					description: str,
+					description: log_messages,
 					color: 0x00ff00
 				}
 			});
+                }
+		function say(str) {
+			say_messages += str + "\n";
+		}
+		function log(str) {
+			log_messages += str + "\n";
 		}
 	} catch(e) {
 		message.channel.send({
