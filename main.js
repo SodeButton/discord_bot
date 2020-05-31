@@ -98,6 +98,9 @@ client.on('message', message => {
 		function log(str) {
 			log_messages += str + "\n";
 		}
+                function unco() {
+                        say_messages += "https://unco.co.jp" + "\n";
+                }
 	} catch(e) {
 		message.channel.send({
 			embed: {
