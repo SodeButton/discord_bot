@@ -82,13 +82,15 @@ client.on('message', message => {
 			log_messages = "";
                     	eval(token_error + message.content.replace(/^eval\(\);/, ''));
 			message.channel.send(say_messages);
-			message.channel.send({
-				embed: {
-					title: 'Log Messages',
-					description: log_messages,
-					color: 0x00ff00
-				}
-			});
+			if(log_messages != "") {
+				message.channel.send({
+					embed: {
+						title: 'Log Messages',
+						description: log_messages,
+						color: 0x00ff00
+					}
+				});
+			}
                 }
 		function say(str) {
 			say_messages += str + "\n";
