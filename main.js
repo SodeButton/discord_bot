@@ -81,7 +81,7 @@ client.on('message', message => {
 			say_messages = "";
 			log_messages = "";
                     	eval(token_error + message.content.replace(/^eval\(\);/, ''));
-			message.channel.send(say_messages);
+			if(say_messages != "") message.channel.send(say_messages);
 			if(log_messages != "") {
 				message.channel.send({
 					embed: {
