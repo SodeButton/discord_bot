@@ -93,10 +93,10 @@ client.on('message', message => {
 			}
                 }
 		function say(str) {
-			say_messages += str + "\n";
+			if(str != undefined) say_messages += str + "\n";
 		}
 		function log(str) {
-			log_messages += str + "\n";
+			if(str != undefined) log_messages += str + "\n";
 		}
                 function unco() {
                         say_messages += "https://unco.co.jp" + "\n";
