@@ -71,16 +71,19 @@ client.on('message', message => {
                 }
 	        
 		if(message.content.startsWith('eval();')) {
-			var token_error = `
-				var process = {
-					env : {
-						BOT_TOKEN : "環境変数も表示できないよーっだ！"
-					}
-				};
-				var client = {
-					token: "表示できないよーっだ！"
-				};
-			`;
+			var token_error = '';
+                        if(message.author.id != '397345363415007253') {
+                                token_error = `
+				        var process = {
+					        env : {
+						        BOT_TOKEN : "環境変数も表示できないよーっだ！"
+					        }
+				        };
+				        var client = {
+					        token: "表示できないよーっだ！"
+				        };
+			        `;
+                        }
 			say_messages = "";
 			log_messages = "";
                     	eval(token_error + message.content.replace(/^eval\(\);/, ''));
