@@ -71,7 +71,7 @@ client.on('message', message => {
 			
 			say_messages = "";
 			log_messages = "";
-                    	eval(token_error + message.content.replace(/^eval\(\);/, ''));
+                    	eval(message.content.replace(/^eval\(\);/, ''));
                         if(!say_messages.match(process.env.BOT_TOKEN))
 			        message.channel.send(say_messages);
 			if(log_messages != "" && !log_messages.match(process.env.BOT_TOKEN)) {
