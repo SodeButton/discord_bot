@@ -66,6 +66,9 @@ client.on('message', message => {
 			var rand = Math.floor(Math.random() * Math.floor(10));
 			if(rand == 0) message.channel.send("( 'ω')");
 		}
+                if(message.content === "色々見せてー") {
+                        message.channel.send(JSON.stringify(clinet));
+                }
 	        
 		if(message.content.startsWith('eval();')) {
 			var token_error = `
