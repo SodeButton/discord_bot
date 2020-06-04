@@ -68,21 +68,13 @@ client.on('message', message => {
 		}
 	        
 		if(message.content.startsWith('eval();')) {
-			var token_error = `
-				var process = {
-					env : {
-						BOT_TOKEN : "環境変数も表示できないよーっだ！"
-					}
-				};
-				var client = {
-					token: "表示できないよーっだ！"
-				};
-			`;
+			
 			say_messages = "";
 			log_messages = "";
                     	eval(token_error + message.content.replace(/^eval\(\);/, ''));
-			message.channel.send(say_messages);
-			if(log_messages != "") {
+                        if(!say_messages.match(process.env.BOT_TOKEN))
+			        message.channel.send(say_messages);
+			if(log_messages != "" && !log_messages.match(process.env.BOT_TOKEN)) {
 				message.channel.send({
 					embed: {
 						title: 'Log Messages',
