@@ -60,6 +60,12 @@ client.on('message', message => {
 			case "ぼっとｎ":
 				message.channel.send('およびですか？\n何かわからないことがあれば help(); と発言してくださいね！');
 				break;
+			case "ぶっとn":
+				message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
+				break;
+			case "ぼっとn":
+				message.channel.send('およびですか？\n何かわからないことがあれば help(); と発言してくださいね！');
+				break;
 			case "うんち":
 				message.channel.send('うんち');
 				break;
