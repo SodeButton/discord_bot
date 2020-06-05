@@ -81,7 +81,7 @@ client.on('message', message => {
 				break;
 		}
 
-		if(old_message == "うんち" && now_message == "きったな") {
+		if(old_message == "うんち" && (now_message == "きったな" || now_message == "きったね")) {
 			var rand = Math.floor(Math.random() * 2);
 			if(rand == 0) message.channel.send("汚くないですよぉ！");
 			else message.channel.send("汚くないですよ！");
