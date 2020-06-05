@@ -17,7 +17,7 @@ client.on('message', message => {
     			type: 'PLAYING'
   	  	});
 		old_message = new_message;
-		nw_message = message.content;
+		now_message = message.content;
 
 		if (message.author.bot) {
 			return;
