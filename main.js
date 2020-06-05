@@ -16,7 +16,7 @@ client.on('message', message => {
 		client.user.setActivity('BOTN ver 1.1.0', {
     			type: 'PLAYING'
   	  	});
-		old_message = new_message;
+		old_message = now_message;
 		now_message = message.content;
 
 		if (message.author.bot) {
