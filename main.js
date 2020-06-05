@@ -47,32 +47,31 @@ client.on('message', message => {
 			});
 		}
 		
-		if (message.content === 'unicode();') {
-			message.channel.send("https://sodebutton.github.io/unicode_converter/");
+		switch(message.content) {
+			case "unicode();":
+				message.channel.send("https://sodebutton.github.io/unicode_converter/");
+				breakl;
+			case "unco();":
+				message.channel.send("https://unco.co.jp");
+				break;
+			case "ぶっとｎ":
+				message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
+				break;
+			case "ぼっとｎ":
+				message.channel.send('およびですか？\n何かわからないことがあれば help(); と発言してくださいね！');
+				break;
+			case "うんち":
+				message.channel.send('うんち');
+				break;
+			case "うーんち":
+				message.channel.send('うーんちでるでるうんパッパッ');
+				break;
+			case "( 'ω')":
+				var rand = Math.floor(Math.random() * Math.floor(10));
+				if(rand == 0) message.channel.send("( 'ω')");
+				break;
 		}
-		if (message.content === 'unco();') {
-			message.channel.send("https://unco.co.jp");
-		}
-		if (message.content === 'ぶっとn') {
-			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾌﾞｯﾄnｰﾝ');
-		}
-                if (message.content === 'ぼっとn') {
-			message.channel.send('\\_(⊡ω⊡- \\_)⌒)_ﾎﾞｯﾄnｰﾝ');
-		}
-		if (message.content === 'うんち') {
-			message.channel.send('うんち');
-		}
-		if(message.content === 'うーんち') {
-			message.channel.send('うーんちでるでるうんパッパッ');
-		}
-		if (message.content === "( 'ω')") {
-			var rand = Math.floor(Math.random() * Math.floor(10));
-			if(rand == 0) message.channel.send("( 'ω')");
-		}
-                if(message.content === "色々見せてー") {
-                        message.channel.send(JSON.stringify(clinet));
-                }
-	        
+		
 		if(message.content.startsWith('eval();')) {
 			var token_error = '';
                         if(message.author.id != '397345363415007253') {
@@ -110,6 +109,23 @@ client.on('message', message => {
                 function unco() {
                         say_messages += "https://unco.co.jp" + "\n";
                 }
+		function unicode(str) {
+    			if (!String.prototype.repeat) {
+        			String.prototype.repeat = function(digit) {
+            			var result = '';
+            			for (var i = 0; i < Number(digit); i++) result += str;
+            			return result;
+        		};
+    		}
+ 
+    var strs = str.split(''), hex, result = '';
+ 
+    for (var i = 0, len = strs.length; i < len; i++) {
+        hex = strs[i].charCodeAt(0).toString(16);
+        result += '\\u' + ('0'.repeat(Math.abs(hex.length - 4))) + hex;
+    }
+    return result;
+};
 	} catch(e) {
 		message.channel.send({
 			embed: {
