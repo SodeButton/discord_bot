@@ -17,7 +17,7 @@ client.on('message', message => {
     			type: 'PLAYING'
   	  	});
 		old_message = new_message;
-		new_message = message.content;
+		nw_message = message.content;
 
 		if (message.author.bot) {
 			return;
@@ -81,7 +81,7 @@ client.on('message', message => {
 				break;
 		}
 		
-		if(old_message == "うんち" && new_message == "きったな") {
+		if(old_message == "うんち" && now_message == "きったな") {
 			message.channel.send("汚くないですよぉ！");
 		}
 		
