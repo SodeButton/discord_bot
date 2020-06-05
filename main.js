@@ -64,7 +64,7 @@ client.on('message', message => {
 		}
 		if(message.content === 'うーんち') {
 			message.channel.send('うーんちでるでるうんパッパッ');
-		
+		}
 		if (message.content === "( 'ω')") {
 			var rand = Math.floor(Math.random() * Math.floor(10));
 			if(rand == 0) message.channel.send("( 'ω')");
