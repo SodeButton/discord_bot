@@ -1,20 +1,23 @@
 'use strict';
 const Discord = require('discord.js');
+const client = new Discord.Client();
 const fs = require('fs');
 let say_messages = "";
 let log_messages = "";
-const client = new Discord.Client();
+let now_message = "";
+let old_message = "";
 
 client.on('ready', () => {
 	console.log('bot is loggin');
-
 });
 
 client.on('message', message => {
 	try {
-		client.user.setActivity('BOTN ver 1.0.0', {
+		client.user.setActivity('BOTN ver 1.1.0', {
     			type: 'PLAYING'
   	  	});
+		old_message = new_message;
+		new_message = message.content;
 
 		if (message.author.bot) {
 			return;
@@ -76,6 +79,10 @@ client.on('message', message => {
 				var rand = Math.floor(Math.random() * Math.floor(10));
 				if(rand == 0) message.channel.send("( 'ω')");
 				break;
+		}
+		
+		if(old_message == "うんち" && new_message == "きったな") {
+			message.channel.send("汚くないですよぉ！");
 		}
 		
 		if(message.content.startsWith('eval();')) {
