@@ -49,7 +49,7 @@ client.on('message', message => {
 				}
 			});
 		}
-		
+
 		switch(message.content) {
 			case "unicode();":
 				message.channel.send("https://sodebutton.github.io/unicode_converter/");
@@ -80,28 +80,28 @@ client.on('message', message => {
 				if(rand == 0) message.channel.send("( 'ω')");
 				break;
 		}
-		
+
 		if(old_message == "うんち" && now_message == "きったな") {
 			message.channel.send("汚くないですよぉ！");
 		}
-		
+
 		if(message.content.startsWith('eval();')) {
 			var token_error = '';
-                        if(message.author.id != '397345363415007253') {
-                                token_error = `
-				        var process = {
-					        env : {
-						        BOT_TOKEN : "環境変数も表示できないよーっだ！"
-					        }
-				        };
-				        var client = {
-					        token: "表示できないよーっだ！"
-				        };
-			        `;
-                        }
+			if(message.author.id != '397345363415007253') {
+				token_error = `
+					var process = {
+						env : {
+							BOT_TOKEN : "環境変数も表示できないよーっだ！"
+						}
+					};
+					var client = {
+						token: "表示できないよーっだ！"
+					};
+				`;
+            }
 			say_messages = "";
 			log_messages = "";
-                    	eval(token_error + message.content.replace(/^eval\(\);/, ''));
+			eval(token_error + message.content.replace(/^eval\(\);/, ''));
 			message.channel.send(say_messages);
 			if(log_messages != "") {
 				message.channel.send({
@@ -112,33 +112,32 @@ client.on('message', message => {
 					}
 				});
 			}
-                }
+		}
 		function say(str) {
 			if(str != undefined) say_messages += str + "\n";
 		}
 		function log(str) {
 			if(str != undefined) log_messages += str + "\n";
 		}
-                function unco() {
-                        say_messages += "https://unco.co.jp" + "\n";
-                }
+		function unco() {
+			say_messages += "https://unco.co.jp" + "\n";
+		}
 		function unicode(str) {
-    			if (!String.prototype.repeat) {
-        			String.prototype.repeat = function(digit) {
-            			var result = '';
-            			for (var i = 0; i < Number(digit); i++) result += str;
-            			return result;
+    		if (!String.prototype.repeat) {
+    			String.prototype.repeat = function(digit) {
+        			var result = '';
+        			for (var i = 0; i < Number(digit); i++) result += str;
+        			return result;
         		};
     		}
- 
-    var strs = str.split(''), hex, result = '';
- 
-    for (var i = 0, len = strs.length; i < len; i++) {
-        hex = strs[i].charCodeAt(0).toString(16);
-        result += '\\u' + ('0'.repeat(Math.abs(hex.length - 4))) + hex;
-    }
-    return result;
-};
+		    var strs = str.split(''), hex, result = '';
+
+		    for (var i = 0, len = strs.length; i < len; i++) {
+		        hex = strs[i].charCodeAt(0).toString(16);
+		        result += '\\u' + ('0'.repeat(Math.abs(hex.length - 4))) + hex;
+		    }
+		    return result;
+		}
 	} catch(e) {
 		message.channel.send({
 			embed: {
