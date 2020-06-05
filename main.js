@@ -76,13 +76,15 @@ client.on('message', message => {
 				message.channel.send('うーんちでるでるうんパッパッ');
 				break;
 			case "( 'ω')":
-				var rand = Math.floor(Math.random() * Math.floor(10));
+				var rand = Math.floor(Math.random() * 10);
 				if(rand == 0) message.channel.send("( 'ω')");
 				break;
 		}
 
 		if(old_message == "うんち" && now_message == "きったな") {
-			message.channel.send("汚くないですよぉ！");
+			var rand = Math.floor(Math.random() * 2);
+			if(rand == 0) message.channel.send("汚くないですよぉ！");
+			else message.channel.send("汚くないですよ！");
 		}
 
 		if(message.content.startsWith('eval();')) {
